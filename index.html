@@ -1,0 +1,4852 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7d9d535d8b0ed7df7b935b8821d0b001 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; top: 10px; right: 10px; z-index: 1000;
+     background: white; padding: 12px 16px; border-radius: 8px;
+     border: 2px solid #555; font-family: Arial, sans-serif; font-size: 12px;
+     box-shadow: 2px 2px 6px rgba(0,0,0,0.3); max-width: 220px;">
+<div style="font-size: 13px; font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 4px;">
+TERRENO 16-22 FEB 2026</div>
+<table style="width:100%; font-size: 12px;">
+<tr><td>&#128308; Confirmados</td><td style="text-align:right;"><b>3</b></td></tr>
+<tr><td>&#128993; Respondidos</td><td style="text-align:right;"><b>7</b></td></tr>
+<tr><td>&#128309; Lobby enviada</td><td style="text-align:right;"><b>9/13</b></td></tr>
+<tr><td>&#128222; Llamar/WA</td><td style="text-align:right;"><b>4</b></td></tr>
+<tr><td>&#9200; Post-viaje</td><td style="text-align:right;"><b>7</b></td></tr>
+<tr><td>&#9993; Enviados total</td><td style="text-align:right;"><b>~160</b></td></tr>
+<tr><td>&#10060; Rebotados</td><td style="text-align:right;"><b>~16</b></td></tr>
+<tr><td>&#128682; Ir en persona</td><td style="text-align:right;"><b>~50</b></td></tr>
+</table>
+<div style="margin-top: 6px; padding-top: 4px; border-top: 1px solid #ccc; font-size: 11px; color: #666;">
+Actualizado: 14-feb-2026</div>
+</div>
+    
+<div style="position: fixed; bottom: 30px; left: 30px; z-index: 1000;
+     background: white; padding: 10px 14px; border-radius: 8px;
+     border: 2px solid #888; font-size: 11px; font-family: Arial;">
+<b>LEYENDA</b><br>
+<span style="color:red;">&#11044;</span> Reunión confirmada<br>
+<span style="color:blue;">&#11044;</span> Oficinas públicas / Ley del Lobby<br>
+<span style="color:green;">&#11044;</span> Comunidad / medios / universidades<br>
+<span style="color:orange;">&#11044;</span> Empresas / sindicatos<br>
+<span style="color:purple;">&#11044;</span> Llamar por teléfono / WA<br>
+<span style="color:gray;">&#11044;</span> Coordinado para después<br>
+<span style="color:darkred;">&#11044;</span> Ir en persona (sin email)
+</div>
+    
+            <div class="folium-map" id="map_7d9d535d8b0ed7df7b935b8821d0b001" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7d9d535d8b0ed7df7b935b8821d0b001 = L.map(
+                "map_7d9d535d8b0ed7df7b935b8821d0b001",
+                {
+                    center: [-22.9, -70.35],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c22e0578ce6c5f70f4c660ea7593e160 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c22e0578ce6c5f70f4c660ea7593e160.addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+        
+    
+            var tile_layer_5384f9e003aad5dc90be42847251f192 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5384f9e003aad5dc90be42847251f192.addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+        
+    
+            var feature_group_c894d81f6ac6b5ddb93d2a1eaa45712d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_8946471939029e40c666910c5e61d8e2 = L.marker(
+                [-23.64, -70.3975],
+                {
+}
+            ).addTo(feature_group_c894d81f6ac6b5ddb93d2a1eaa45712d);
+        
+    
+            var icon_f220c6e5c9541abd7e2b5182a6564ae4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_342c891f32d8afe4bc20abc775f9f1f3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_72be1167ca316d75f92a9e28b7c36dda = $(`<div id="html_72be1167ca316d75f92a9e28b7c36dda" style="width: 100.0%; height: 100.0%;"><b>Adolfo Sepúlveda</b><br>Fund. Superación Pobreza<br><b style="color:red;">Lun 16, 12:00</b><br>Oficina regional Antofagasta</div>`)[0];
+                popup_342c891f32d8afe4bc20abc775f9f1f3.setContent(html_72be1167ca316d75f92a9e28b7c36dda);
+            
+        
+
+        marker_8946471939029e40c666910c5e61d8e2.bindPopup(popup_342c891f32d8afe4bc20abc775f9f1f3)
+        ;
+
+        
+    
+    
+            marker_8946471939029e40c666910c5e61d8e2.bindTooltip(
+                `<div>
+                     ✓ Adolfo Sepúlveda — Lun 16 12:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8946471939029e40c666910c5e61d8e2.setIcon(icon_f220c6e5c9541abd7e2b5182a6564ae4);
+            
+    
+            var marker_2c883b88f861d4b56b04fab63fc4e5d5 = L.marker(
+                [-23.6385, -70.3981],
+                {
+}
+            ).addTo(feature_group_c894d81f6ac6b5ddb93d2a1eaa45712d);
+        
+    
+            var icon_c17abcc369d3be76570cda193f62f5e2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ce0e69f4a6eeeae07b67469a78b5d0d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d49b4bdcf7b6bab2a45ccbfb84cf9a17 = $(`<div id="html_d49b4bdcf7b6bab2a45ccbfb84cf9a17" style="width: 100.0%; height: 100.0%;"><b>SERNAPESCA</b><br>Audiencia Ley del Lobby<br><b style="color:red;">Lun 16, 15:00</b><br>Dir. Regional, Av. Argentina 2560<br>⚠️ LLEVAR CÉDULA DE IDENTIDAD</div>`)[0];
+                popup_9ce0e69f4a6eeeae07b67469a78b5d0d.setContent(html_d49b4bdcf7b6bab2a45ccbfb84cf9a17);
+            
+        
+
+        marker_2c883b88f861d4b56b04fab63fc4e5d5.bindPopup(popup_9ce0e69f4a6eeeae07b67469a78b5d0d)
+        ;
+
+        
+    
+    
+            marker_2c883b88f861d4b56b04fab63fc4e5d5.bindTooltip(
+                `<div>
+                     ✓ SERNAPESCA — Lun 16 15:00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2c883b88f861d4b56b04fab63fc4e5d5.setIcon(icon_c17abcc369d3be76570cda193f62f5e2);
+            
+    
+            var marker_81e6ed1350b1c52efceadbcd0d9353f4 = L.marker(
+                [-23.101, -70.4485],
+                {
+}
+            ).addTo(feature_group_c894d81f6ac6b5ddb93d2a1eaa45712d);
+        
+    
+            var icon_8b07f727bd5f451a1ba10932f002e1dc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "check",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_31c66ce4f1236e2183171cdc7672c740 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ddcb993e9f52b1951fc4200be8bd55dd = $(`<div id="html_ddcb993e9f52b1951fc4200be8bd55dd" style="width: 100.0%; height: 100.0%;"><b>FUNCULTUR — Eduardo Araneda</b><br><b style="color:red;">Mar 17, 17:00</b><br>Teatro Gamelin Guerra Seura<br>Pasaje Goñi 200, plaza central de Mejillones</div>`)[0];
+                popup_31c66ce4f1236e2183171cdc7672c740.setContent(html_ddcb993e9f52b1951fc4200be8bd55dd);
+            
+        
+
+        marker_81e6ed1350b1c52efceadbcd0d9353f4.bindPopup(popup_31c66ce4f1236e2183171cdc7672c740)
+        ;
+
+        
+    
+    
+            marker_81e6ed1350b1c52efceadbcd0d9353f4.bindTooltip(
+                `<div>
+                     ✓ FUNCULTUR — Mar 17 17:00 — Teatro Gamelin
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_81e6ed1350b1c52efceadbcd0d9353f4.setIcon(icon_8b07f727bd5f451a1ba10932f002e1dc);
+            
+    
+            feature_group_c894d81f6ac6b5ddb93d2a1eaa45712d.addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+        
+    
+            var feature_group_f5524b17269bfbed1962ad8fb3d691d1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_c3c3840f66a9d1f7639dd773ef79e0b6 = L.marker(
+                [-23.6519, -70.3963],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_e535af76f6b359943655b311082ec466 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ecb81b5ab8bf4b3de927b9e7c246d1a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_795fae947d258686d9b935a59c521a40 = $(`<div id="html_795fae947d258686d9b935a59c521a40" style="width: 100.0%; height: 100.0%;"><b>MUNICIPALIDAD DE ANTOFAGASTA</b><br>San Martín 2736<br>Ley del Lobby Alcalde: ✓ enviada<br>COSOC: email enviado a cosoc.municipal@imantof.cl</div>`)[0];
+                popup_9ecb81b5ab8bf4b3de927b9e7c246d1a.setContent(html_795fae947d258686d9b935a59c521a40);
+            
+        
+
+        marker_c3c3840f66a9d1f7639dd773ef79e0b6.bindPopup(popup_9ecb81b5ab8bf4b3de927b9e7c246d1a)
+        ;
+
+        
+    
+    
+            marker_c3c3840f66a9d1f7639dd773ef79e0b6.bindTooltip(
+                `<div>
+                     Muni Antofagasta — Lobby ✓
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c3c3840f66a9d1f7639dd773ef79e0b6.setIcon(icon_e535af76f6b359943655b311082ec466);
+            
+    
+            var marker_7f1ee05b45d3d641e597ddcafffd68b3 = L.marker(
+                [-23.6519, -70.395],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_4f83bab2e191d0fa5fd70e9006f0004a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0d7751cdc3b119e0eb5b697d537f501f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_880f8f32de670f8e98cd42aa00198b88 = $(`<div id="html_880f8f32de670f8e98cd42aa00198b88" style="width: 100.0%; height: 100.0%;"><b>SMA</b><br>Superintendencia Medio Ambiente<br>Ley del Lobby: ✓ enviada (AW003AW2091732)<br>Ir a oficina si no responden</div>`)[0];
+                popup_0d7751cdc3b119e0eb5b697d537f501f.setContent(html_880f8f32de670f8e98cd42aa00198b88);
+            
+        
+
+        marker_7f1ee05b45d3d641e597ddcafffd68b3.bindPopup(popup_0d7751cdc3b119e0eb5b697d537f501f)
+        ;
+
+        
+    
+    
+            marker_7f1ee05b45d3d641e597ddcafffd68b3.bindTooltip(
+                `<div>
+                     SMA — Lobby ✓
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7f1ee05b45d3d641e597ddcafffd68b3.setIcon(icon_4f83bab2e191d0fa5fd70e9006f0004a);
+            
+    
+            var marker_4953c2d914bc80f510b13960cebdcbec = L.marker(
+                [-23.6519, -70.3937],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_f03853f7d4744f716bce1be83a504f63 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4f673604073736766257de8c29b5ecbd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_900f5c5f70a37c10c3ab88c10e4d8d3d = $(`<div id="html_900f5c5f70a37c10c3ab88c10e4d8d3d" style="width: 100.0%; height: 100.0%;"><b>SERNAGEOMIN</b><br>Ley del Lobby: ✓ enviada (AS004AW2091835)<br>Ir a oficina si no responden</div>`)[0];
+                popup_4f673604073736766257de8c29b5ecbd.setContent(html_900f5c5f70a37c10c3ab88c10e4d8d3d);
+            
+        
+
+        marker_4953c2d914bc80f510b13960cebdcbec.bindPopup(popup_4f673604073736766257de8c29b5ecbd)
+        ;
+
+        
+    
+    
+            marker_4953c2d914bc80f510b13960cebdcbec.bindTooltip(
+                `<div>
+                     SERNAGEOMIN — Lobby ✓
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4953c2d914bc80f510b13960cebdcbec.setIcon(icon_f03853f7d4744f716bce1be83a504f63);
+            
+    
+            var marker_ed6b4f2edbe2cd915307dc60427c235c = L.marker(
+                [-23.6471, -70.3982],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_e9a5ec611089318afcd9c34a164c69bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c16bc2fc654494e820ef70ec7e4dba22 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_210dec93a6d234d6dc17bcb29ba00f6b = $(`<div id="html_210dec93a6d234d6dc17bcb29ba00f6b" style="width: 100.0%; height: 100.0%;"><b>SEREMI Medio Ambiente</b><br>Rodrigo Jara Godoy<br>Ley del Lobby: ✓ enviada (AW002AW2091959)</div>`)[0];
+                popup_c16bc2fc654494e820ef70ec7e4dba22.setContent(html_210dec93a6d234d6dc17bcb29ba00f6b);
+            
+        
+
+        marker_ed6b4f2edbe2cd915307dc60427c235c.bindPopup(popup_c16bc2fc654494e820ef70ec7e4dba22)
+        ;
+
+        
+    
+    
+            marker_ed6b4f2edbe2cd915307dc60427c235c.bindTooltip(
+                `<div>
+                     SEREMI M. Ambiente — Lobby ✓
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ed6b4f2edbe2cd915307dc60427c235c.setIcon(icon_e9a5ec611089318afcd9c34a164c69bc);
+            
+    
+            var marker_908dee5bd2ecb73e65319b74514f4772 = L.marker(
+                [-23.6471, -70.397],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_4b188d640aa7683cc549c14e0bb20ba8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_15ff7ba85b8a9ab316c7565e132d9191 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1b0244bbc1a5c725a9d2cc5751c0f61a = $(`<div id="html_1b0244bbc1a5c725a9d2cc5751c0f61a" style="width: 100.0%; height: 100.0%;"><b>SEREMI Energía</b><br>Dafne Pino Riffo<br>Ley del Lobby: ✓ enviada (AU002AW2091978)<br>Oriana Heuser de vacaciones</div>`)[0];
+                popup_15ff7ba85b8a9ab316c7565e132d9191.setContent(html_1b0244bbc1a5c725a9d2cc5751c0f61a);
+            
+        
+
+        marker_908dee5bd2ecb73e65319b74514f4772.bindPopup(popup_15ff7ba85b8a9ab316c7565e132d9191)
+        ;
+
+        
+    
+    
+            marker_908dee5bd2ecb73e65319b74514f4772.bindTooltip(
+                `<div>
+                     SEREMI Energía — Lobby ✓
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_908dee5bd2ecb73e65319b74514f4772.setIcon(icon_4b188d640aa7683cc549c14e0bb20ba8);
+            
+    
+            var marker_954e215ad019f0fea1d2ea556a6d4766 = L.marker(
+                [-23.6471, -70.3995],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_3db8aee0ebeca395be75a45f58d0cff1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0f4f12242933ff697c3ab4f2ed634966 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a314da5fdae4bbb162fa88c611d8d75e = $(`<div id="html_a314da5fdae4bbb162fa88c611d8d75e" style="width: 100.0%; height: 100.0%;"><b>SEREMI Salud</b><br>Ley del Lobby: ✓ enviada (AO041AW2092027)</div>`)[0];
+                popup_0f4f12242933ff697c3ab4f2ed634966.setContent(html_a314da5fdae4bbb162fa88c611d8d75e);
+            
+        
+
+        marker_954e215ad019f0fea1d2ea556a6d4766.bindPopup(popup_0f4f12242933ff697c3ab4f2ed634966)
+        ;
+
+        
+    
+    
+            marker_954e215ad019f0fea1d2ea556a6d4766.bindTooltip(
+                `<div>
+                     SEREMI Salud — Lobby ✓
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_954e215ad019f0fea1d2ea556a6d4766.setIcon(icon_3db8aee0ebeca395be75a45f58d0cff1);
+            
+    
+            var marker_ea1e38ac3052d01f6a03f93cce2768d3 = L.marker(
+                [-23.6471, -70.4008],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_2132f551cda2f86919aa84fdabcbfb26 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_54fe8e3f885df6da10f0f47d10438630 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f3d9c54d43dcb01c9e2213be286564aa = $(`<div id="html_f3d9c54d43dcb01c9e2213be286564aa" style="width: 100.0%; height: 100.0%;"><b>Delegación Presidencial Regional</b><br>Arturo Prat 384, piso 2<br>Ley del Lobby: ✓ enviada (AB008AW2092020)</div>`)[0];
+                popup_54fe8e3f885df6da10f0f47d10438630.setContent(html_f3d9c54d43dcb01c9e2213be286564aa);
+            
+        
+
+        marker_ea1e38ac3052d01f6a03f93cce2768d3.bindPopup(popup_54fe8e3f885df6da10f0f47d10438630)
+        ;
+
+        
+    
+    
+            marker_ea1e38ac3052d01f6a03f93cce2768d3.bindTooltip(
+                `<div>
+                     Delegación Presidencial — Lobby ✓
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ea1e38ac3052d01f6a03f93cce2768d3.setIcon(icon_2132f551cda2f86919aa84fdabcbfb26);
+            
+    
+            var marker_a1ef0b789a3d707d91526728e14487bf = L.marker(
+                [-23.65, -70.397],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_11c7757ed86a315670aececd8e9b3aa3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7373d7952a63582e3ff1521addb29735 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_80003c62786ddf9e7ef99e47665ac65f = $(`<div id="html_80003c62786ddf9e7ef99e47665ac65f" style="width: 100.0%; height: 100.0%;"><b>SEA</b><br>Servicio Evaluación Ambiental<br>Tel: 55 267 1276<br><b style="color:red;">Ley del Lobby: FALTA enviar</b><br>Email rebotó — ir en persona o llamar</div>`)[0];
+                popup_7373d7952a63582e3ff1521addb29735.setContent(html_80003c62786ddf9e7ef99e47665ac65f);
+            
+        
+
+        marker_a1ef0b789a3d707d91526728e14487bf.bindPopup(popup_7373d7952a63582e3ff1521addb29735)
+        ;
+
+        
+    
+    
+            marker_a1ef0b789a3d707d91526728e14487bf.bindTooltip(
+                `<div>
+                     ⚠️ SEA — Lobby PENDIENTE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a1ef0b789a3d707d91526728e14487bf.setIcon(icon_11c7757ed86a315670aececd8e9b3aa3);
+            
+    
+            var marker_844f44e107229732736e0422c8a32c48 = L.marker(
+                [-23.65, -70.3955],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_dce81fa9c5cbb31ef0077364323160ba = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_97c34959529bf40be764bf3afae8c987 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9c07737c8c4b000c173347f973722bfa = $(`<div id="html_9c07737c8c4b000c173347f973722bfa" style="width: 100.0%; height: 100.0%;"><b>GORE Antofagasta</b><br>Ley del Lobby Gobernador: RECHAZADA<br>Solicitar a Jefe Div. Planificación<br><b style="color:red;">Lobby nueva: FALTA enviar</b></div>`)[0];
+                popup_97c34959529bf40be764bf3afae8c987.setContent(html_9c07737c8c4b000c173347f973722bfa);
+            
+        
+
+        marker_844f44e107229732736e0422c8a32c48.bindPopup(popup_97c34959529bf40be764bf3afae8c987)
+        ;
+
+        
+    
+    
+            marker_844f44e107229732736e0422c8a32c48.bindTooltip(
+                `<div>
+                     ⚠️ GORE — Lobby PENDIENTE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_844f44e107229732736e0422c8a32c48.setIcon(icon_dce81fa9c5cbb31ef0077364323160ba);
+            
+    
+            var marker_da7b2ed8930b7b703746d36280579fcc = L.marker(
+                [-23.65, -70.394],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_8c08c3d74af4ff13123f6ef39a3aa4f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d166fc501df89c35bfc52ea4ac2c2a14 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c0f2026989784e193f2904d1b1308eb0 = $(`<div id="html_c0f2026989784e193f2904d1b1308eb0" style="width: 100.0%; height: 100.0%;"><b>DGA</b><br>Dirección General de Aguas<br><b style="color:red;">Ley del Lobby: FALTA enviar</b></div>`)[0];
+                popup_d166fc501df89c35bfc52ea4ac2c2a14.setContent(html_c0f2026989784e193f2904d1b1308eb0);
+            
+        
+
+        marker_da7b2ed8930b7b703746d36280579fcc.bindPopup(popup_d166fc501df89c35bfc52ea4ac2c2a14)
+        ;
+
+        
+    
+    
+            marker_da7b2ed8930b7b703746d36280579fcc.bindTooltip(
+                `<div>
+                     ⚠️ DGA — Lobby PENDIENTE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_da7b2ed8930b7b703746d36280579fcc.setIcon(icon_8c08c3d74af4ff13123f6ef39a3aa4f8);
+            
+    
+            var marker_9cba87c2feaf3ce70759a07956784148 = L.marker(
+                [-23.65, -70.3985],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_5e20c5f8cad1ca191abd23cd095749ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ee207357eacf2df8208487b29e5a152a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c44dc17e8f3cde5b2dd635212b89a265 = $(`<div id="html_c44dc17e8f3cde5b2dd635212b89a265" style="width: 100.0%; height: 100.0%;"><b>SEREMI MINVU</b><br><b style="color:red;">Ley del Lobby: FALTA enviar</b></div>`)[0];
+                popup_ee207357eacf2df8208487b29e5a152a.setContent(html_c44dc17e8f3cde5b2dd635212b89a265);
+            
+        
+
+        marker_9cba87c2feaf3ce70759a07956784148.bindPopup(popup_ee207357eacf2df8208487b29e5a152a)
+        ;
+
+        
+    
+    
+            marker_9cba87c2feaf3ce70759a07956784148.bindTooltip(
+                `<div>
+                     ⚠️ SEREMI MINVU — Lobby PENDIENTE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9cba87c2feaf3ce70759a07956784148.setIcon(icon_5e20c5f8cad1ca191abd23cd095749ab);
+            
+    
+            var marker_feb8930ee341fe092e6f7bcfdb7aeeb2 = L.marker(
+                [-23.6385, -70.3995],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_69f6a256923d087bb42d8c49d70c6125 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_02517aa5f06afa391a2b1dcbddb936a9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a40c48447d7024530ec6863bc8be69e4 = $(`<div id="html_a40c48447d7024530ec6863bc8be69e4" style="width: 100.0%; height: 100.0%;"><b>SERNAPESCA Dir. Regional</b><br>Pilar Irribarren, Directora Regional<br>Av. Argentina 2560<br>Email enviado a pirribarren@sernapesca.cl</div>`)[0];
+                popup_02517aa5f06afa391a2b1dcbddb936a9.setContent(html_a40c48447d7024530ec6863bc8be69e4);
+            
+        
+
+        marker_feb8930ee341fe092e6f7bcfdb7aeeb2.bindPopup(popup_02517aa5f06afa391a2b1dcbddb936a9)
+        ;
+
+        
+    
+    
+            marker_feb8930ee341fe092e6f7bcfdb7aeeb2.bindTooltip(
+                `<div>
+                     SERNAPESCA Regional — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_feb8930ee341fe092e6f7bcfdb7aeeb2.setIcon(icon_69f6a256923d087bb42d8c49d70c6125);
+            
+    
+            var marker_55d453944ea7e02430c7b1c66768a87e = L.marker(
+                [-23.6471, -70.402],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_0f474dbef2831ac319fd4f3660de896b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b50c89942cd72a5d73b054173485aa33 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c6dc5ae92292941b71da3702f58ffae2 = $(`<div id="html_c6dc5ae92292941b71da3702f58ffae2" style="width: 100.0%; height: 100.0%;"><b>SEREMI de Gobierno</b><br>Paulina Larrondo<br>Email enviado</div>`)[0];
+                popup_b50c89942cd72a5d73b054173485aa33.setContent(html_c6dc5ae92292941b71da3702f58ffae2);
+            
+        
+
+        marker_55d453944ea7e02430c7b1c66768a87e.bindPopup(popup_b50c89942cd72a5d73b054173485aa33)
+        ;
+
+        
+    
+    
+            marker_55d453944ea7e02430c7b1c66768a87e.bindTooltip(
+                `<div>
+                     SEREMI Gobierno — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_55d453944ea7e02430c7b1c66768a87e.setIcon(icon_0f474dbef2831ac319fd4f3660de896b);
+            
+    
+            var marker_40edda058bc6e5179d5c6a67f0da1d51 = L.marker(
+                [-23.0998, -70.4487],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_24b9574e4e10425e02cefb500db9b6a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a4f906da3b0f599743f39f725403b269 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d6c2e010f0a0de55601f6f110f820fd1 = $(`<div id="html_d6c2e010f0a0de55601f6f110f820fd1" style="width: 100.0%; height: 100.0%;"><b>MUNICIPALIDAD DE MEJILLONES</b><br>Fco. Antonio Pinto 200<br>Ley del Lobby Alcalde: ✓ enviada<br>• DIDECO Susana Pradenas (derivó contactos orgs)<br>• Dir. Obras (redirigió a revisordom@)</div>`)[0];
+                popup_a4f906da3b0f599743f39f725403b269.setContent(html_d6c2e010f0a0de55601f6f110f820fd1);
+            
+        
+
+        marker_40edda058bc6e5179d5c6a67f0da1d51.bindPopup(popup_a4f906da3b0f599743f39f725403b269)
+        ;
+
+        
+    
+    
+            marker_40edda058bc6e5179d5c6a67f0da1d51.bindTooltip(
+                `<div>
+                     Muni Mejillones — Lobby ✓
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_40edda058bc6e5179d5c6a67f0da1d51.setIcon(icon_24b9574e4e10425e02cefb500db9b6a9);
+            
+    
+            var marker_dd316b90e88a8f1a4746263dd1128c5e = L.marker(
+                [-23.0998, -70.4475],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_7bb171b127326974bab0df9f3175d28a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6f3c480c21b24b4052075b30dbb36df3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e35c498a804f6467a51bd80ac78edba4 = $(`<div id="html_e35c498a804f6467a51bd80ac78edba4" style="width: 100.0%; height: 100.0%;"><b>Concejo Municipal Mejillones</b><br>• Manuel Monardes (enviado)<br>• José Barraza (enviado)<br>• Elsie Biaggini (enviado)<br>• María Cabello (enviado)<br>• Liza Sapiain (enviado, custom)<br>• Enrique Estrada (enviado, custom)<br><i>6 emails enviados</i></div>`)[0];
+                popup_6f3c480c21b24b4052075b30dbb36df3.setContent(html_e35c498a804f6467a51bd80ac78edba4);
+            
+        
+
+        marker_dd316b90e88a8f1a4746263dd1128c5e.bindPopup(popup_6f3c480c21b24b4052075b30dbb36df3)
+        ;
+
+        
+    
+    
+            marker_dd316b90e88a8f1a4746263dd1128c5e.bindTooltip(
+                `<div>
+                     Concejales Mejillones (6) — enviados
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dd316b90e88a8f1a4746263dd1128c5e.setIcon(icon_7bb171b127326974bab0df9f3175d28a);
+            
+    
+            var marker_5c3cd1d2789e9324953e50ddb8ca3a8d = L.marker(
+                [-23.0867, -70.414],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_86f1ab5547ed5f930ef1e09af4828fcb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_af894de6c9567f748ef80c02eb9f8d1c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4765e4f9fc4b0b756f200e4f80572b65 = $(`<div id="html_4765e4f9fc4b0b756f200e4f80572b65" style="width: 100.0%; height: 100.0%;"><b>Capitanía de Puerto Mejillones</b><br>DIRECTEMAR<br>Cristian Paredes Porras<br>Email enviado</div>`)[0];
+                popup_af894de6c9567f748ef80c02eb9f8d1c.setContent(html_4765e4f9fc4b0b756f200e4f80572b65);
+            
+        
+
+        marker_5c3cd1d2789e9324953e50ddb8ca3a8d.bindPopup(popup_af894de6c9567f748ef80c02eb9f8d1c)
+        ;
+
+        
+    
+    
+            marker_5c3cd1d2789e9324953e50ddb8ca3a8d.bindTooltip(
+                `<div>
+                     Cap. Puerto Mejillones — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c3cd1d2789e9324953e50ddb8ca3a8d.setIcon(icon_86f1ab5547ed5f930ef1e09af4828fcb);
+            
+    
+            var marker_468fd9c3fffc023e269d24d87db81933 = L.marker(
+                [-23.634, -70.3965],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_13a2c68b1434e6553480b636321b5404 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_120b8a61572486246933313f14870ff5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_11c3bda28671608096a30256835831be = $(`<div id="html_11c3bda28671608096a30256835831be" style="width: 100.0%; height: 100.0%;"><b>Capitanía de Puerto Antofagasta</b><br>DIRECTEMAR<br>Diego Aguilera Modrow<br>Email enviado</div>`)[0];
+                popup_120b8a61572486246933313f14870ff5.setContent(html_11c3bda28671608096a30256835831be);
+            
+        
+
+        marker_468fd9c3fffc023e269d24d87db81933.bindPopup(popup_120b8a61572486246933313f14870ff5)
+        ;
+
+        
+    
+    
+            marker_468fd9c3fffc023e269d24d87db81933.bindTooltip(
+                `<div>
+                     Cap. Puerto Antofagasta — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_468fd9c3fffc023e269d24d87db81933.setIcon(icon_13a2c68b1434e6553480b636321b5404);
+            
+    
+            var marker_7c3f034dd052cc98dee488005771d44b = L.marker(
+                [-22.092, -70.1979],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_22bec873809423216ebfb6c5d029942e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0a829165b9b1ccce590a3ec872f838a7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ddd8de8d74be4b1e7fa1fa3a6e5c3a7a = $(`<div id="html_ddd8de8d74be4b1e7fa1fa3a6e5c3a7a" style="width: 100.0%; height: 100.0%;"><b>MUNICIPALIDAD DE TOCOPILLA</b><br>21 de Mayo, Tocopilla<br>Ley del Lobby Alcalde: ✓ enviada<br>• Pablo Quezada (activo desde el 17)<br>• 6 Concejales (emails enviados)<br>• Nathacha Muñoz respondió</div>`)[0];
+                popup_0a829165b9b1ccce590a3ec872f838a7.setContent(html_ddd8de8d74be4b1e7fa1fa3a6e5c3a7a);
+            
+        
+
+        marker_7c3f034dd052cc98dee488005771d44b.bindPopup(popup_0a829165b9b1ccce590a3ec872f838a7)
+        ;
+
+        
+    
+    
+            marker_7c3f034dd052cc98dee488005771d44b.bindTooltip(
+                `<div>
+                     Muni Tocopilla — Lobby ✓
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7c3f034dd052cc98dee488005771d44b.setIcon(icon_22bec873809423216ebfb6c5d029942e);
+            
+    
+            var marker_2af31e5c2fa5014aa3712ec73f088f0c = L.marker(
+                [-22.0935, -70.1965],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_c998d6b89e5f1f3910a4df1b433f2805 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7c2b2aa64ca485baaf1869fa21557ffc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_022626bb6b7e2609052c7b9cf43716c1 = $(`<div id="html_022626bb6b7e2609052c7b9cf43716c1" style="width: 100.0%; height: 100.0%;"><b>DIDECO Tocopilla</b><br>Director: Arnoldo Riquelme Gallego<br>ariquelmeg@imtocopilla.cl<br>Secretaria: Loreto Contreras<br>Email enviado 14-feb — sin respuesta aún</div>`)[0];
+                popup_7c2b2aa64ca485baaf1869fa21557ffc.setContent(html_022626bb6b7e2609052c7b9cf43716c1);
+            
+        
+
+        marker_2af31e5c2fa5014aa3712ec73f088f0c.bindPopup(popup_7c2b2aa64ca485baaf1869fa21557ffc)
+        ;
+
+        
+    
+    
+            marker_2af31e5c2fa5014aa3712ec73f088f0c.bindTooltip(
+                `<div>
+                     DIDECO Tocopilla — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2af31e5c2fa5014aa3712ec73f088f0c.setIcon(icon_c998d6b89e5f1f3910a4df1b433f2805);
+            
+    
+            var marker_fd3db533fa9eba55636dc71fb9a5d4d5 = L.marker(
+                [-22.094, -70.196],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_da211805b6baa6b2f79d3b91eba45387 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cc1d50bac4ebff9e8af881544c3812a9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b8db494b91486dd436d39754e37d4314 = $(`<div id="html_b8db494b91486dd436d39754e37d4314" style="width: 100.0%; height: 100.0%;"><b>SERNAPESCA Tocopilla</b><br>Cristian Mejías<br>Tel: 55-2556235 / 569 79662639<br>Encargado oficina Tocopilla<br>Derivado por Yasna Cortes</div>`)[0];
+                popup_cc1d50bac4ebff9e8af881544c3812a9.setContent(html_b8db494b91486dd436d39754e37d4314);
+            
+        
+
+        marker_fd3db533fa9eba55636dc71fb9a5d4d5.bindPopup(popup_cc1d50bac4ebff9e8af881544c3812a9)
+        ;
+
+        
+    
+    
+            marker_fd3db533fa9eba55636dc71fb9a5d4d5.bindTooltip(
+                `<div>
+                     SERNAPESCA Tocopilla — contacto directo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fd3db533fa9eba55636dc71fb9a5d4d5.setIcon(icon_da211805b6baa6b2f79d3b91eba45387);
+            
+    
+            var marker_bbca48f55364a13f751b0f2a56d189ba = L.marker(
+                [-22.0925, -70.199],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_a352d2645b1516409712585a8e92a387 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_42b2e70c9b1acc8fcbc9f24075b615e8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d7483ed426df102c6a5a80655944c4b7 = $(`<div id="html_d7483ed426df102c6a5a80655944c4b7" style="width: 100.0%; height: 100.0%;"><b>Concejo Municipal Tocopilla</b><br>• Diego Rivera (enviado)<br>• John Portilla (enviado)<br>• María Cristina Olivares (enviado)<br>• María Eugenia Ulloa (enviado)<br>• Ricardo Ortega (enviado)<br>• Bastián Pizarro (enviado)<br><i>6 emails custom enviados</i></div>`)[0];
+                popup_42b2e70c9b1acc8fcbc9f24075b615e8.setContent(html_d7483ed426df102c6a5a80655944c4b7);
+            
+        
+
+        marker_bbca48f55364a13f751b0f2a56d189ba.bindPopup(popup_42b2e70c9b1acc8fcbc9f24075b615e8)
+        ;
+
+        
+    
+    
+            marker_bbca48f55364a13f751b0f2a56d189ba.bindTooltip(
+                `<div>
+                     Concejales Tocopilla (6) — enviados
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bbca48f55364a13f751b0f2a56d189ba.setIcon(icon_a352d2645b1516409712585a8e92a387);
+            
+    
+            var marker_c6d927a58b49b6441b6f5c2a81fc3f5c = L.marker(
+                [-22.0945, -70.197],
+                {
+}
+            ).addTo(feature_group_f5524b17269bfbed1962ad8fb3d691d1);
+        
+    
+            var icon_fb1fac63f8cf67205c65b71fe7a75fbd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_688dccfbdca036c9ffeb81af3c2574d0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1a9031b7612e5d95c0a316fd3fac83c4 = $(`<div id="html_1a9031b7612e5d95c0a316fd3fac83c4" style="width: 100.0%; height: 100.0%;"><b>Capitanía de Puerto Tocopilla</b><br>DIRECTEMAR<br>Cristian Peters Haedicke<br>Email enviado</div>`)[0];
+                popup_688dccfbdca036c9ffeb81af3c2574d0.setContent(html_1a9031b7612e5d95c0a316fd3fac83c4);
+            
+        
+
+        marker_c6d927a58b49b6441b6f5c2a81fc3f5c.bindPopup(popup_688dccfbdca036c9ffeb81af3c2574d0)
+        ;
+
+        
+    
+    
+            marker_c6d927a58b49b6441b6f5c2a81fc3f5c.bindTooltip(
+                `<div>
+                     Cap. Puerto Tocopilla — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c6d927a58b49b6441b6f5c2a81fc3f5c.setIcon(icon_fb1fac63f8cf67205c65b71fe7a75fbd);
+            
+    
+            feature_group_f5524b17269bfbed1962ad8fb3d691d1.addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+        
+    
+            var feature_group_9838dbe149b380d2bb0ab401591f46ad = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_bdb1c8521730f6ef951c04cf2039835f = L.marker(
+                [-23.6487, -70.4009],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_a50eb3d06650b12a0394506915cb6f74 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2131bc86b01fca98d154292c4f5703a5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_05a99c3084a275ec52702505a5aca596 = $(`<div id="html_05a99c3084a275ec52702505a5aca596" style="width: 100.0%; height: 100.0%;"><b>Cuerpo de Bomberos de Antofagasta</b><br>Cuartel General, Sucre 545<br>Director: Jorge Ortiz — email enviado<br>Capitán 1ª Cía: Ian Guerra<br><b style="color:green;">✓ CONTACTADO POR WHATSAPP</b></div>`)[0];
+                popup_2131bc86b01fca98d154292c4f5703a5.setContent(html_05a99c3084a275ec52702505a5aca596);
+            
+        
+
+        marker_bdb1c8521730f6ef951c04cf2039835f.bindPopup(popup_2131bc86b01fca98d154292c4f5703a5)
+        ;
+
+        
+    
+    
+            marker_bdb1c8521730f6ef951c04cf2039835f.bindTooltip(
+                `<div>
+                     ✓ Bomberos — contactado por WA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bdb1c8521730f6ef951c04cf2039835f.setIcon(icon_a50eb3d06650b12a0394506915cb6f74);
+            
+    
+            var marker_000642b563c64560358deff80552cd48 = L.marker(
+                [-23.646, -70.393],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_2d33b29994ba61784d876e6138b2af08 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52511974c5f24affd0dec3e9a5ad6151 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a027d7a611fad9404880613824eb03f6 = $(`<div id="html_a027d7a611fad9404880613824eb03f6" style="width: 100.0%; height: 100.0%;"><b>ONG Fractal</b><br>Tel: 988227146 / 999057605<br>Email rebotó (dominio no existe)<br>Llamar o buscar en terreno</div>`)[0];
+                popup_52511974c5f24affd0dec3e9a5ad6151.setContent(html_a027d7a611fad9404880613824eb03f6);
+            
+        
+
+        marker_000642b563c64560358deff80552cd48.bindPopup(popup_52511974c5f24affd0dec3e9a5ad6151)
+        ;
+
+        
+    
+    
+            marker_000642b563c64560358deff80552cd48.bindTooltip(
+                `<div>
+                     ONG Fractal — llamar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_000642b563c64560358deff80552cd48.setIcon(icon_2d33b29994ba61784d876e6138b2af08);
+            
+    
+            var marker_82c87be75569b4f6b9654da6f3af677e = L.marker(
+                [-23.64, -70.396],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_f0f616c7cb34a2d1c2ca4ee6678aa35f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_953bcc3b039a9dd37b33457ee3560ff9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5e3ff5e72f1ee3d1d3de287ee426e2fa = $(`<div id="html_5e3ff5e72f1ee3d1d3de287ee426e2fa" style="width: 100.0%; height: 100.0%;"><b>CREO Antofagasta</b><br>Email enviado, sin respuesta</div>`)[0];
+                popup_953bcc3b039a9dd37b33457ee3560ff9.setContent(html_5e3ff5e72f1ee3d1d3de287ee426e2fa);
+            
+        
+
+        marker_82c87be75569b4f6b9654da6f3af677e.bindPopup(popup_953bcc3b039a9dd37b33457ee3560ff9)
+        ;
+
+        
+    
+    
+            marker_82c87be75569b4f6b9654da6f3af677e.bindTooltip(
+                `<div>
+                     CREO — sin respuesta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_82c87be75569b4f6b9654da6f3af677e.setIcon(icon_f0f616c7cb34a2d1c2ca4ee6678aa35f);
+            
+    
+            var marker_0d4e2c564de536bf0cea90236f3f8b8f = L.marker(
+                [-23.6798, -70.4098],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_659bb5587a75d709a5f04e697f88b670 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "education",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6b0881363eb21b74714e2d20e651d0cc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7f10a1536a68cda25d1582feb9ec46d5 = $(`<div id="html_7f10a1536a68cda25d1582feb9ec46d5" style="width: 100.0%; height: 100.0%;"><b>UCN — Cristina Dorador</b><br>Profesora Asociada<br>cristina.dorador@uantof.cl<br>Email enviado, sin respuesta</div>`)[0];
+                popup_6b0881363eb21b74714e2d20e651d0cc.setContent(html_7f10a1536a68cda25d1582feb9ec46d5);
+            
+        
+
+        marker_0d4e2c564de536bf0cea90236f3f8b8f.bindPopup(popup_6b0881363eb21b74714e2d20e651d0cc)
+        ;
+
+        
+    
+    
+            marker_0d4e2c564de536bf0cea90236f3f8b8f.bindTooltip(
+                `<div>
+                     UCN Dorador — sin respuesta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0d4e2c564de536bf0cea90236f3f8b8f.setIcon(icon_659bb5587a75d709a5f04e697f88b670);
+            
+    
+            var marker_f9fe056ed9a77a9166c95e03d9125f8c = L.marker(
+                [-23.6798, -70.4085],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_ab8298d85a6abed53d6cb6bac6cc00f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "education",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b9fe7998350114b41b40deaf07184215 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6c0e75733f91077d0c89794e4f3b0d5e = $(`<div id="html_6c0e75733f91077d0c89794e4f3b0d5e" style="width: 100.0%; height: 100.0%;"><b>UCN — Ingrid Garcés</b><br>Profesora Titular<br>ingrid.garces@uantof.cl<br>Email enviado (custom), sin respuesta</div>`)[0];
+                popup_b9fe7998350114b41b40deaf07184215.setContent(html_6c0e75733f91077d0c89794e4f3b0d5e);
+            
+        
+
+        marker_f9fe056ed9a77a9166c95e03d9125f8c.bindPopup(popup_b9fe7998350114b41b40deaf07184215)
+        ;
+
+        
+    
+    
+            marker_f9fe056ed9a77a9166c95e03d9125f8c.bindTooltip(
+                `<div>
+                     UCN Garcés — sin respuesta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f9fe056ed9a77a9166c95e03d9125f8c.setIcon(icon_ab8298d85a6abed53d6cb6bac6cc00f7);
+            
+    
+            var marker_6e17bf8a62c56e64a97bbf8fe1a8309d = L.marker(
+                [-23.6798, -70.4112],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_3230572f817d63e6c755f99625e50f1b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "education",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ef788abd1706577e729104227dc8dadb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ec9359886a1094dbce9485fafbc8ef4c = $(`<div id="html_ec9359886a1094dbce9485fafbc8ef4c" style="width: 100.0%; height: 100.0%;"><b>UCN — Decano FACIMAR</b><br>Carlos Riquelme<br>decano.facimar@uantof.cl<br>Email enviado (custom), sin respuesta</div>`)[0];
+                popup_ef788abd1706577e729104227dc8dadb.setContent(html_ec9359886a1094dbce9485fafbc8ef4c);
+            
+        
+
+        marker_6e17bf8a62c56e64a97bbf8fe1a8309d.bindPopup(popup_ef788abd1706577e729104227dc8dadb)
+        ;
+
+        
+    
+    
+            marker_6e17bf8a62c56e64a97bbf8fe1a8309d.bindTooltip(
+                `<div>
+                     UCN FACIMAR — sin respuesta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6e17bf8a62c56e64a97bbf8fe1a8309d.setIcon(icon_3230572f817d63e6c755f99625e50f1b);
+            
+    
+            var marker_2c18cf4663faf05884a655c49c94d613 = L.marker(
+                [-23.703, -70.421],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_df44a0bc39ff65152f442ec3a9f61b9d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "education",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e41d865173456c62da8b56a1c7e3f3fe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_321e998bb72736984faee3f8d52ad34c = $(`<div id="html_321e998bb72736984faee3f8d52ad34c" style="width: 100.0%; height: 100.0%;"><b>UA — Depto. Arquitectura / CREA</b><br>Campus Coloso<br>Email enviado, sin respuesta</div>`)[0];
+                popup_e41d865173456c62da8b56a1c7e3f3fe.setContent(html_321e998bb72736984faee3f8d52ad34c);
+            
+        
+
+        marker_2c18cf4663faf05884a655c49c94d613.bindPopup(popup_e41d865173456c62da8b56a1c7e3f3fe)
+        ;
+
+        
+    
+    
+            marker_2c18cf4663faf05884a655c49c94d613.bindTooltip(
+                `<div>
+                     UA CREA — sin respuesta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2c18cf4663faf05884a655c49c94d613.setIcon(icon_df44a0bc39ff65152f442ec3a9f61b9d);
+            
+    
+            var marker_d789a798fd2d6a36a7291a2e5f49fae4 = L.marker(
+                [-23.643, -70.396],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_9802c79c3b875d7fd54837b3e523664c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dd22eb6908e3de4b4bf6fec5ee0db9f5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4ebaddfb35df1d0cc5d8105f5535b565 = $(`<div id="html_4ebaddfb35df1d0cc5d8105f5535b565" style="width: 100.0%; height: 100.0%;"><b>TECHO-Chile Antofagasta</b><br>antofagasta.chile@techo.org<br>Email enviado, sin respuesta</div>`)[0];
+                popup_dd22eb6908e3de4b4bf6fec5ee0db9f5.setContent(html_4ebaddfb35df1d0cc5d8105f5535b565);
+            
+        
+
+        marker_d789a798fd2d6a36a7291a2e5f49fae4.bindPopup(popup_dd22eb6908e3de4b4bf6fec5ee0db9f5)
+        ;
+
+        
+    
+    
+            marker_d789a798fd2d6a36a7291a2e5f49fae4.bindTooltip(
+                `<div>
+                     TECHO — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d789a798fd2d6a36a7291a2e5f49fae4.setIcon(icon_9802c79c3b875d7fd54837b3e523664c);
+            
+    
+            var marker_66f369cbd366bd3cd87df7a862a2882f = L.marker(
+                [-23.6435, -70.395],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_a1df3c46bc6d919e78ea02fd3429f574 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d8ec36a54fc47ff9ae79647dca70a7e3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f2e959aa68b313598ddbfb0953a09177 = $(`<div id="html_f2e959aa68b313598ddbfb0953a09177" style="width: 100.0%; height: 100.0%;"><b>Mesa Intercultural de Antofagasta</b><br>mesainterculturalantofagasta@gmail.com<br>Email enviado, sin respuesta</div>`)[0];
+                popup_d8ec36a54fc47ff9ae79647dca70a7e3.setContent(html_f2e959aa68b313598ddbfb0953a09177);
+            
+        
+
+        marker_66f369cbd366bd3cd87df7a862a2882f.bindPopup(popup_d8ec36a54fc47ff9ae79647dca70a7e3)
+        ;
+
+        
+    
+    
+            marker_66f369cbd366bd3cd87df7a862a2882f.bindTooltip(
+                `<div>
+                     Mesa Intercultural — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_66f369cbd366bd3cd87df7a862a2882f.setIcon(icon_a1df3c46bc6d919e78ea02fd3429f574);
+            
+    
+            var marker_223d10f077218e2954fd856b14b62d20 = L.marker(
+                [-23.644, -70.3945],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_209e800c47741b8257024b56c1b13e92 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4e2392473f36828df6a4d2d8f41efa19 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_88bf756dedd265b3c986c2cc2dccb4ea = $(`<div id="html_88bf756dedd265b3c986c2cc2dccb4ea" style="width: 100.0%; height: 100.0%;"><b>SJM Antofagasta</b><br>Servicio Jesuita a Migrantes<br>Email enviado</div>`)[0];
+                popup_4e2392473f36828df6a4d2d8f41efa19.setContent(html_88bf756dedd265b3c986c2cc2dccb4ea);
+            
+        
+
+        marker_223d10f077218e2954fd856b14b62d20.bindPopup(popup_4e2392473f36828df6a4d2d8f41efa19)
+        ;
+
+        
+    
+    
+            marker_223d10f077218e2954fd856b14b62d20.bindTooltip(
+                `<div>
+                     SJM — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_223d10f077218e2954fd856b14b62d20.setIcon(icon_209e800c47741b8257024b56c1b13e92);
+            
+    
+            var marker_9c7291f72efc53be1e519473cac85c2e = L.marker(
+                [-23.6445, -70.3955],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_915a1f0015b1b871c59354f68b9d2dd1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d77ed888b2877dde766699a936b7f64b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_12b65faae1a637d1c58bde0bd85164df = $(`<div id="html_12b65faae1a637d1c58bde0bd85164df" style="width: 100.0%; height: 100.0%;"><b>JV Población Favorecedora</b><br>Patricio Márquez, Presidente<br>Email enviado (vía DIDECO)</div>`)[0];
+                popup_d77ed888b2877dde766699a936b7f64b.setContent(html_12b65faae1a637d1c58bde0bd85164df);
+            
+        
+
+        marker_9c7291f72efc53be1e519473cac85c2e.bindPopup(popup_d77ed888b2877dde766699a936b7f64b)
+        ;
+
+        
+    
+    
+            marker_9c7291f72efc53be1e519473cac85c2e.bindTooltip(
+                `<div>
+                     JV Favorecedora — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9c7291f72efc53be1e519473cac85c2e.setIcon(icon_915a1f0015b1b871c59354f68b9d2dd1);
+            
+    
+            var marker_bf117ff8c8a3ed42fdca64be81cd056d = L.marker(
+                [-23.645, -70.3945],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_eb4e064541a98347ea1267cb9cae50bf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_251c3ede7ab8cd792c46440d7434eac9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a4a0bd3b3a25018ae60c210bbf099384 = $(`<div id="html_a4a0bd3b3a25018ae60c210bbf099384" style="width: 100.0%; height: 100.0%;"><b>Mesa Regional Mujer y Pesca</b><br>Maritza Fernández, Vocera<br>Email enviado a cosoc.municipal@imantof.cl</div>`)[0];
+                popup_251c3ede7ab8cd792c46440d7434eac9.setContent(html_a4a0bd3b3a25018ae60c210bbf099384);
+            
+        
+
+        marker_bf117ff8c8a3ed42fdca64be81cd056d.bindPopup(popup_251c3ede7ab8cd792c46440d7434eac9)
+        ;
+
+        
+    
+    
+            marker_bf117ff8c8a3ed42fdca64be81cd056d.bindTooltip(
+                `<div>
+                     Mesa Mujer y Pesca — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bf117ff8c8a3ed42fdca64be81cd056d.setIcon(icon_eb4e064541a98347ea1267cb9cae50bf);
+            
+    
+            var marker_9983355abf415082ad28d0348fbbb7aa = L.marker(
+                [-23.6455, -70.396],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_e09a29a03ded2297e273fdcf3206b330 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_deb494811106e96252d55f8cd572815f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7c6c753db2f1490166f21bd6bc8d9a19 = $(`<div id="html_7c6c753db2f1490166f21bd6bc8d9a19" style="width: 100.0%; height: 100.0%;"><b>CORFO — Comité Desarrollo Productivo</b><br>Email enviado, sin respuesta</div>`)[0];
+                popup_deb494811106e96252d55f8cd572815f.setContent(html_7c6c753db2f1490166f21bd6bc8d9a19);
+            
+        
+
+        marker_9983355abf415082ad28d0348fbbb7aa.bindPopup(popup_deb494811106e96252d55f8cd572815f)
+        ;
+
+        
+    
+    
+            marker_9983355abf415082ad28d0348fbbb7aa.bindTooltip(
+                `<div>
+                     CORFO — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9983355abf415082ad28d0348fbbb7aa.setIcon(icon_e09a29a03ded2297e273fdcf3206b330);
+            
+    
+            var marker_d8f2a496a338c86c854bea7ceaabe4e5 = L.marker(
+                [-23.6798, -70.406],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_270000f3103907adc91d3f905d3956f9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "education",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_733a7886722fa946bd15018895036d82 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5acaf7dad404cdce0c12277604479039 = $(`<div id="html_5acaf7dad404cdce0c12277604479039" style="width: 100.0%; height: 100.0%;"><b>UCN — Núcleo Riesgos Costeros / DESONA</b><br>Email enviado a ipp@ucn.cl<br>Sin respuesta</div>`)[0];
+                popup_733a7886722fa946bd15018895036d82.setContent(html_5acaf7dad404cdce0c12277604479039);
+            
+        
+
+        marker_d8f2a496a338c86c854bea7ceaabe4e5.bindPopup(popup_733a7886722fa946bd15018895036d82)
+        ;
+
+        
+    
+    
+            marker_d8f2a496a338c86c854bea7ceaabe4e5.bindTooltip(
+                `<div>
+                     UCN DESONA — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d8f2a496a338c86c854bea7ceaabe4e5.setIcon(icon_270000f3103907adc91d3f905d3956f9);
+            
+    
+            var marker_42cd2a2cc15422eddefe155e27f6b446 = L.marker(
+                [-23.643, -70.3935],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_a9f9bdf124cb0ae922924b87da8649df = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "volume-up",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3d2c862a6cb17c65e33449ad8fdc8f0a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_40e86716814efba301cb9cc8118f3835 = $(`<div id="html_40e86716814efba301cb9cc8118f3835" style="width: 100.0%; height: 100.0%;"><b>Medios Antofagasta</b><br>• Diario de Antofagasta (enviado)<br>• El Mercurio de Antofagasta (enviado)<br>• Radio Carnaval FM (enviado)<br>• Radio Caribe FM (enviado)<br>• Radio Madero (enviado)<br>• La Estrella de Antofagasta (enviado)<br>• Cooperativa Regional (enviado)<br>• Portal Minero (enviado)<br>• Colegio Médico (rebotó — irresolvable)</div>`)[0];
+                popup_3d2c862a6cb17c65e33449ad8fdc8f0a.setContent(html_40e86716814efba301cb9cc8118f3835);
+            
+        
+
+        marker_42cd2a2cc15422eddefe155e27f6b446.bindPopup(popup_3d2c862a6cb17c65e33449ad8fdc8f0a)
+        ;
+
+        
+    
+    
+            marker_42cd2a2cc15422eddefe155e27f6b446.bindTooltip(
+                `<div>
+                     Medios Antofagasta (9)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_42cd2a2cc15422eddefe155e27f6b446.setIcon(icon_a9f9bdf124cb0ae922924b87da8649df);
+            
+    
+            var marker_764d0b2cf372c3f29b8c75ff492ff0d1 = L.marker(
+                [-23.644, -70.394],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_a40f79e9a2e627e6a674de57ba0cb4ac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4667cb60333a906e07aa488087e391d3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ae8ce2123cc20b93b963cda12ef8306b = $(`<div id="html_ae8ce2123cc20b93b963cda12ef8306b" style="width: 100.0%; height: 100.0%;"><b>FIMA</b><br>ONG jurídica ambiental (Santiago)<br>Ezio Costa, Director Ejecutivo<br>Email enviado — contacto remoto</div>`)[0];
+                popup_4667cb60333a906e07aa488087e391d3.setContent(html_ae8ce2123cc20b93b963cda12ef8306b);
+            
+        
+
+        marker_764d0b2cf372c3f29b8c75ff492ff0d1.bindPopup(popup_4667cb60333a906e07aa488087e391d3)
+        ;
+
+        
+    
+    
+            marker_764d0b2cf372c3f29b8c75ff492ff0d1.bindTooltip(
+                `<div>
+                     FIMA — contacto remoto
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_764d0b2cf372c3f29b8c75ff492ff0d1.setIcon(icon_a40f79e9a2e627e6a674de57ba0cb4ac);
+            
+    
+            var marker_33d2abb9154ab2885100f61e6cf06edb = L.marker(
+                [-23.1002, -70.447],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_3bb788b1f3833963b85c026ac28189bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_887fcc9ce112d701878c0dcacd320c51 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e7024393eb9239240764986854a7d154 = $(`<div id="html_e7024393eb9239240764986854a7d154" style="width: 100.0%; height: 100.0%;"><b>JV N°5 Gamelin Guerra</b><br>Mitzie Kohnen-Kampf<br>Email rebotó 2 veces<br>Buscar sede vecinal cerca de la plaza</div>`)[0];
+                popup_887fcc9ce112d701878c0dcacd320c51.setContent(html_e7024393eb9239240764986854a7d154);
+            
+        
+
+        marker_33d2abb9154ab2885100f61e6cf06edb.bindPopup(popup_887fcc9ce112d701878c0dcacd320c51)
+        ;
+
+        
+    
+    
+            marker_33d2abb9154ab2885100f61e6cf06edb.bindTooltip(
+                `<div>
+                     JV N°5 — buscar en persona
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_33d2abb9154ab2885100f61e6cf06edb.setIcon(icon_3bb788b1f3833963b85c026ac28189bd);
+            
+    
+            var marker_a2caf2641d734059618359042c19b3e1 = L.marker(
+                [-23.1028, -70.4462],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_9c07d11c36d8fb02de3bd00ed678b920 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5f9e9421c55561dc156d0d7b6418fb25 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_64093e65a19b9f97d7ba6b93380cc5d8 = $(`<div id="html_64093e65a19b9f97d7ba6b93380cc5d8" style="width: 100.0%; height: 100.0%;"><b>Hospital / CESFAM Mejillones</b><br>Av. Bernardo O'Higgins 451<br>Director de Salud<br>Email rebotó — ir directo</div>`)[0];
+                popup_5f9e9421c55561dc156d0d7b6418fb25.setContent(html_64093e65a19b9f97d7ba6b93380cc5d8);
+            
+        
+
+        marker_a2caf2641d734059618359042c19b3e1.bindPopup(popup_5f9e9421c55561dc156d0d7b6418fb25)
+        ;
+
+        
+    
+    
+            marker_a2caf2641d734059618359042c19b3e1.bindTooltip(
+                `<div>
+                     Hospital — ir directo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a2caf2641d734059618359042c19b3e1.setIcon(icon_9c07d11c36d8fb02de3bd00ed678b920);
+            
+    
+            var marker_c607b4abc59ab0cfa2499801c33c277e = L.marker(
+                [-23.1002, -70.45],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_87c595db3397b08dcd91ce11f05151b9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_050ec1fb55fb6ff13b41a73ff5c2b177 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_85204652848c532c8a2a55bc9434ded9 = $(`<div id="html_85204652848c532c8a2a55bc9434ded9" style="width: 100.0%; height: 100.0%;"><b>TEAtreves</b><br>Agrupación teatral<br>Email rebotó<br>Preguntar en Casa de la Cultura / FUNCULTUR</div>`)[0];
+                popup_050ec1fb55fb6ff13b41a73ff5c2b177.setContent(html_85204652848c532c8a2a55bc9434ded9);
+            
+        
+
+        marker_c607b4abc59ab0cfa2499801c33c277e.bindPopup(popup_050ec1fb55fb6ff13b41a73ff5c2b177)
+        ;
+
+        
+    
+    
+            marker_c607b4abc59ab0cfa2499801c33c277e.bindTooltip(
+                `<div>
+                     TEAtreves — preguntar en cultura
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c607b4abc59ab0cfa2499801c33c277e.setIcon(icon_87c595db3397b08dcd91ce11f05151b9);
+            
+    
+            var marker_d7422b8716d1410b5502022275c0e42a = L.marker(
+                [-23.1015, -70.4505],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_a355a20a9e18cbf84238bc5306ad0935 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_614bdfab5d07dd63d6d229faf58ddad4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5d8de7ba38dd1ccc00e26922880eed5a = $(`<div id="html_5d8de7ba38dd1ccc00e26922880eed5a" style="width: 100.0%; height: 100.0%;"><b>Mujeres Pro-Activas</b><br>Email rebotó<br>Preguntar en DIDECO / sede comunitaria</div>`)[0];
+                popup_614bdfab5d07dd63d6d229faf58ddad4.setContent(html_5d8de7ba38dd1ccc00e26922880eed5a);
+            
+        
+
+        marker_d7422b8716d1410b5502022275c0e42a.bindPopup(popup_614bdfab5d07dd63d6d229faf58ddad4)
+        ;
+
+        
+    
+    
+            marker_d7422b8716d1410b5502022275c0e42a.bindTooltip(
+                `<div>
+                     Mujeres Pro-Activas — preguntar DIDECO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d7422b8716d1410b5502022275c0e42a.setIcon(icon_a355a20a9e18cbf84238bc5306ad0935);
+            
+    
+            var marker_bc1a4fea2f28e172b76057a1ae563c99 = L.marker(
+                [-23.0976, -70.453],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_05aa5d339cd977db6df9bb8da74f797c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1d95869aacaf16c4eb50e4781bc5af5d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e57998b67306bfea04025e6b95edd667 = $(`<div id="html_e57998b67306bfea04025e6b95edd667" style="width: 100.0%; height: 100.0%;"><b>MejiAmbiente</b><br>Instagram: @mejiambiente<br>Solo contacto por redes sociales<br>Buscar en caleta / zona costera</div>`)[0];
+                popup_1d95869aacaf16c4eb50e4781bc5af5d.setContent(html_e57998b67306bfea04025e6b95edd667);
+            
+        
+
+        marker_bc1a4fea2f28e172b76057a1ae563c99.bindPopup(popup_1d95869aacaf16c4eb50e4781bc5af5d)
+        ;
+
+        
+    
+    
+            marker_bc1a4fea2f28e172b76057a1ae563c99.bindTooltip(
+                `<div>
+                     MejiAmbiente — Instagram @mejiambiente
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc1a4fea2f28e172b76057a1ae563c99.setIcon(icon_05aa5d339cd977db6df9bb8da74f797c);
+            
+    
+            var marker_916561bb00fd9ad511d8b80062b10009 = L.marker(
+                [-23.1002, -70.4495],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_b6983a9324052c0feec7bd2b0381b5aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_138433917be52ec9c303a62be3eb3cb6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_53e13dd23795958e7154719afabf2448 = $(`<div id="html_53e13dd23795958e7154719afabf2448" style="width: 100.0%; height: 100.0%;"><b>Escuela de Fútbol / mibacache</b><br>Email rebotó (dominio no existe)<br>Buscar en estadio / multicancha</div>`)[0];
+                popup_138433917be52ec9c303a62be3eb3cb6.setContent(html_53e13dd23795958e7154719afabf2448);
+            
+        
+
+        marker_916561bb00fd9ad511d8b80062b10009.bindPopup(popup_138433917be52ec9c303a62be3eb3cb6)
+        ;
+
+        
+    
+    
+            marker_916561bb00fd9ad511d8b80062b10009.bindTooltip(
+                `<div>
+                     Escuela Fútbol — buscar en cancha
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_916561bb00fd9ad511d8b80062b10009.setIcon(icon_b6983a9324052c0feec7bd2b0381b5aa);
+            
+    
+            var marker_5c7ac28b606e19268580a9e36b041057 = L.marker(
+                [-23.0976, -70.4525],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_f1a19bf73b1e3456346c8fb6409b6096 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6d4f5d97a8643a9af10d4d59ff6551b5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4373d5798628a11856ee1cb8b27c0a5d = $(`<div id="html_4373d5798628a11856ee1cb8b27c0a5d" style="width: 100.0%; height: 100.0%;"><b>Chao Carbón Mejillones</b><br>Sara Larraín / Gonzalo Melej<br>Email enviado</div>`)[0];
+                popup_6d4f5d97a8643a9af10d4d59ff6551b5.setContent(html_4373d5798628a11856ee1cb8b27c0a5d);
+            
+        
+
+        marker_5c7ac28b606e19268580a9e36b041057.bindPopup(popup_6d4f5d97a8643a9af10d4d59ff6551b5)
+        ;
+
+        
+    
+    
+            marker_5c7ac28b606e19268580a9e36b041057.bindTooltip(
+                `<div>
+                     Chao Carbón — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c7ac28b606e19268580a9e36b041057.setIcon(icon_f1a19bf73b1e3456346c8fb6409b6096);
+            
+    
+            var marker_6fbeac3b681a9cec45ce32d890fc16fe = L.marker(
+                [-23.097, -70.4535],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_3ab237f22b60eea3c047521a9be3c942 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bfbeacaa351a0fa3baff00cc86dfe70d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_14ef11f66ede7cb65ebcd8609aad0215 = $(`<div id="html_14ef11f66ede7cb65ebcd8609aad0215" style="width: 100.0%; height: 100.0%;"><b>Círculo Protección Bahía Sur</b><br>César Sanhueza Muñoz<br>Email enviado</div>`)[0];
+                popup_bfbeacaa351a0fa3baff00cc86dfe70d.setContent(html_14ef11f66ede7cb65ebcd8609aad0215);
+            
+        
+
+        marker_6fbeac3b681a9cec45ce32d890fc16fe.bindPopup(popup_bfbeacaa351a0fa3baff00cc86dfe70d)
+        ;
+
+        
+    
+    
+            marker_6fbeac3b681a9cec45ce32d890fc16fe.bindTooltip(
+                `<div>
+                     Círculo Bahía Sur — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6fbeac3b681a9cec45ce32d890fc16fe.setIcon(icon_3ab237f22b60eea3c047521a9be3c942);
+            
+    
+            var marker_462ef7c8972259200e20e9370f92f780 = L.marker(
+                [-23.0965, -70.4525],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_24f84997bfb3296e609d5e633614e9c9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e8ea256365248cd6ce67d8778368a1c7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d85fa52df961b69d04d41b896bd0c82c = $(`<div id="html_d85fa52df961b69d04d41b896bd0c82c" style="width: 100.0%; height: 100.0%;"><b>Fundación Gaviotín Chico</b><br>Silvia Hernández Aquez<br>Email enviado</div>`)[0];
+                popup_e8ea256365248cd6ce67d8778368a1c7.setContent(html_d85fa52df961b69d04d41b896bd0c82c);
+            
+        
+
+        marker_462ef7c8972259200e20e9370f92f780.bindPopup(popup_e8ea256365248cd6ce67d8778368a1c7)
+        ;
+
+        
+    
+    
+            marker_462ef7c8972259200e20e9370f92f780.bindTooltip(
+                `<div>
+                     Fund. Gaviotín Chico — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_462ef7c8972259200e20e9370f92f780.setIcon(icon_24f84997bfb3296e609d5e633614e9c9);
+            
+    
+            var marker_bd1a8b764614a3db2d26f513cb50d1c6 = L.marker(
+                [-23.098, -70.454],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_f219e7b5995fe28d7628ed3448ad564a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_05b5474ec0a14ae08b39170d37c9ce59 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5fde5f416d9f5fba3f201c51508fc130 = $(`<div id="html_5fde5f416d9f5fba3f201c51508fc130" style="width: 100.0%; height: 100.0%;"><b>Consejo Comunal Patrimonial</b><br>Wilfredo Santoro Cerda<br>REBOTADO — buscar en terreno</div>`)[0];
+                popup_05b5474ec0a14ae08b39170d37c9ce59.setContent(html_5fde5f416d9f5fba3f201c51508fc130);
+            
+        
+
+        marker_bd1a8b764614a3db2d26f513cb50d1c6.bindPopup(popup_05b5474ec0a14ae08b39170d37c9ce59)
+        ;
+
+        
+    
+    
+            marker_bd1a8b764614a3db2d26f513cb50d1c6.bindTooltip(
+                `<div>
+                     Consejo Patrimonial — rebotado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bd1a8b764614a3db2d26f513cb50d1c6.setIcon(icon_f219e7b5995fe28d7628ed3448ad564a);
+            
+    
+            var marker_625eb24a6fd34415248c01e955747292 = L.marker(
+                [-23.1005, -70.45],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_9e96b72aed9f704f17282e48cd88ae68 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_75ca08e2cd0e3daf3ec7d0e8c3151d6a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5baf4d4a86600a14a00fa7e619c4fa75 = $(`<div id="html_5baf4d4a86600a14a00fa7e619c4fa75" style="width: 100.0%; height: 100.0%;"><b>Juntas de Vecinos Mejillones</b><br>• JV N°1 Juan Panadés — Manuel Aravena (enviado)<br>• JV N°5 Gamelin Guerra — Mitzie Kohnen (rebotó)<br>• JV N°11 Unión — Patricia Robles (enviado)<br>• JV N°12 Hornitos (enviado)</div>`)[0];
+                popup_75ca08e2cd0e3daf3ec7d0e8c3151d6a.setContent(html_5baf4d4a86600a14a00fa7e619c4fa75);
+            
+        
+
+        marker_625eb24a6fd34415248c01e955747292.bindPopup(popup_75ca08e2cd0e3daf3ec7d0e8c3151d6a)
+        ;
+
+        
+    
+    
+            marker_625eb24a6fd34415248c01e955747292.bindTooltip(
+                `<div>
+                     JJ.VV. Mejillones (4)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_625eb24a6fd34415248c01e955747292.setIcon(icon_9e96b72aed9f704f17282e48cd88ae68);
+            
+    
+            var marker_fd5fb0f0aa9385cb2e970ae42d4489f2 = L.marker(
+                [-23.102, -70.449],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_4b372a717233321747d3db17ed230cbb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2ee0a7bde66360b0f730a89e5b15770f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d5bc1c008a94a16bd75d28e2af8eb2c4 = $(`<div id="html_d5bc1c008a94a16bd75d28e2af8eb2c4" style="width: 100.0%; height: 100.0%;"><b>Organizaciones sociales Mejillones</b><br>• CRAM — Nelson Wastavino (enviado)<br>• Años Felices — Linda Belén Escobar (enviado)<br>• Cruz Roja — Inés Aguirre (rebotó, reenviado)<br>• Club Hipertensos — Enriqueta Velásquez (enviado)<br>• Campesinos Bonanza — Nathalie Rodríguez (enviado)<br>• Gato Andino — Franchesca Sánchez (enviado)</div>`)[0];
+                popup_2ee0a7bde66360b0f730a89e5b15770f.setContent(html_d5bc1c008a94a16bd75d28e2af8eb2c4);
+            
+        
+
+        marker_fd5fb0f0aa9385cb2e970ae42d4489f2.bindPopup(popup_2ee0a7bde66360b0f730a89e5b15770f)
+        ;
+
+        
+    
+    
+            marker_fd5fb0f0aa9385cb2e970ae42d4489f2.bindTooltip(
+                `<div>
+                     Orgs. sociales Mejillones (6)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fd5fb0f0aa9385cb2e970ae42d4489f2.setIcon(icon_4b372a717233321747d3db17ed230cbb);
+            
+    
+            var marker_cb5930593726df836ce9c8ef324df3ea = L.marker(
+                [-23.1025, -70.448],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_164f9fc043f07423383381a5096ff119 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2dd7cdf098a39c6c2ca4b58d41497c90 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_86d3aa497701c3ad61dce5b874af87d9 = $(`<div id="html_86d3aa497701c3ad61dce5b874af87d9" style="width: 100.0%; height: 100.0%;"><b>Clubes deportivos Mejillones</b><br>• Manuel Prado — Carlos Bahamondes (enviado)<br>• Unión Marítimo — Pablo Valdivia (enviado)<br>• Casa de Máquinas — Hugo Julio (enviado)<br>• Esmeralda — Eliana Ayllón (enviado)<br>• Vóleibol — Natalia Casareggio (enviado)<br>• Likanantay — Dorka Bonilla (enviado)<br>• Libre Esperanza — Verónica Pizarro (enviado)<br>• Fun Wheels — Karen Cáceres (enviado)<br>• Tenis — Horacio Fredes (rebotó, reenviado)</div>`)[0];
+                popup_2dd7cdf098a39c6c2ca4b58d41497c90.setContent(html_86d3aa497701c3ad61dce5b874af87d9);
+            
+        
+
+        marker_cb5930593726df836ce9c8ef324df3ea.bindPopup(popup_2dd7cdf098a39c6c2ca4b58d41497c90)
+        ;
+
+        
+    
+    
+            marker_cb5930593726df836ce9c8ef324df3ea.bindTooltip(
+                `<div>
+                     Clubes deportivos Mejillones (9)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cb5930593726df836ce9c8ef324df3ea.setIcon(icon_164f9fc043f07423383381a5096ff119);
+            
+    
+            var marker_fb57f0e53ed57dd44f14320601350f87 = L.marker(
+                [-23.0976, -70.4545],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_d38f2fd07691a1b12fc2c4271937e897 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3a074e73bd4c6d6cdd4ccb7b7d2d77e1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cabfb8d2204cfd97e1f952b0189129b8 = $(`<div id="html_cabfb8d2204cfd97e1f952b0189129b8" style="width: 100.0%; height: 100.0%;"><b>Organizaciones de pescadores Mejillones</b><br>• Sind. Buzos Mariscadores Caleta Constitución — Oroindo Delgado (enviado)<br>• AG Sindicatos Pescadores (cubierto por DIDECO)<br>• Sindicato N°1 Puerto Mejillones (cubierto)</div>`)[0];
+                popup_3a074e73bd4c6d6cdd4ccb7b7d2d77e1.setContent(html_cabfb8d2204cfd97e1f952b0189129b8);
+            
+        
+
+        marker_fb57f0e53ed57dd44f14320601350f87.bindPopup(popup_3a074e73bd4c6d6cdd4ccb7b7d2d77e1)
+        ;
+
+        
+    
+    
+            marker_fb57f0e53ed57dd44f14320601350f87.bindTooltip(
+                `<div>
+                     Pescadores Mejillones (3)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fb57f0e53ed57dd44f14320601350f87.setIcon(icon_d38f2fd07691a1b12fc2c4271937e897);
+            
+    
+            var marker_0ba7a09c3cbc487259bfab83d39e7c93 = L.marker(
+                [-23.1002, -70.4475],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_28d9e6773ac588860c529db397da7036 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "volume-up",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_28c44bd0ebd418ad2272c4e3befef5d8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7e7f8ab0f45051c2b71da7239ee237ca = $(`<div id="html_7e7f8ab0f45051c2b71da7239ee237ca" style="width: 100.0%; height: 100.0%;"><b>Medios Mejillones</b><br>• Radio Gamelin FM (enviado, sin respuesta)<br>• Radio Litoral FM 104.3 (enviado, sin respuesta)</div>`)[0];
+                popup_28c44bd0ebd418ad2272c4e3befef5d8.setContent(html_7e7f8ab0f45051c2b71da7239ee237ca);
+            
+        
+
+        marker_0ba7a09c3cbc487259bfab83d39e7c93.bindPopup(popup_28c44bd0ebd418ad2272c4e3befef5d8)
+        ;
+
+        
+    
+    
+            marker_0ba7a09c3cbc487259bfab83d39e7c93.bindTooltip(
+                `<div>
+                     Medios Mejillones (2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0ba7a09c3cbc487259bfab83d39e7c93.setIcon(icon_28d9e6773ac588860c529db397da7036);
+            
+    
+            var marker_cfee948620c091f39ed04b24ec4f1976 = L.marker(
+                [-22.091, -70.1985],
+                {
+}
+            ).addTo(feature_group_9838dbe149b380d2bb0ab401591f46ad);
+        
+    
+            var icon_c550c808b407d65f37cae68a047bd37c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "volume-up",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2f40badc0e24ca90dd9d6408ef63777e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d943a941102ca6b073e2e8be3ba2498b = $(`<div id="html_d943a941102ca6b073e2e8be3ba2498b" style="width: 100.0%; height: 100.0%;"><b>Medios Tocopilla</b><br>• Radio Makarena 105.5 (enviado, sin respuesta)<br>• Radio Nueva Coya 94.5 (enviado, sin respuesta)<br>• El Regionalista — Fernando San Román (rebotó)</div>`)[0];
+                popup_2f40badc0e24ca90dd9d6408ef63777e.setContent(html_d943a941102ca6b073e2e8be3ba2498b);
+            
+        
+
+        marker_cfee948620c091f39ed04b24ec4f1976.bindPopup(popup_2f40badc0e24ca90dd9d6408ef63777e)
+        ;
+
+        
+    
+    
+            marker_cfee948620c091f39ed04b24ec4f1976.bindTooltip(
+                `<div>
+                     Medios Tocopilla (3)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cfee948620c091f39ed04b24ec4f1976.setIcon(icon_c550c808b407d65f37cae68a047bd37c);
+            
+    
+            feature_group_9838dbe149b380d2bb0ab401591f46ad.addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+        
+    
+            var feature_group_0232415df653224c044d68ee32bd8e3b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_843c6e0987a3db33887bcf7c61327ba7 = L.marker(
+                [-22.095, -70.1955],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_efbf28eea5d3646a68b421492de5023f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8a1f318bb61839e44c91337df1c3b72c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cb503c707d0efe1183884482ac62c72f = $(`<div id="html_cb503c707d0efe1183884482ac62c72f" style="width: 100.0%; height: 100.0%;"><b>Codelco Operaciones Norte</b><br>Cristhian De la Piedra<br>Gte. Asuntos Comunitarios<br>contactosocioambiental@codelco.cl<br>Email enviado, sin respuesta</div>`)[0];
+                popup_8a1f318bb61839e44c91337df1c3b72c.setContent(html_cb503c707d0efe1183884482ac62c72f);
+            
+        
+
+        marker_843c6e0987a3db33887bcf7c61327ba7.bindPopup(popup_8a1f318bb61839e44c91337df1c3b72c)
+        ;
+
+        
+    
+    
+            marker_843c6e0987a3db33887bcf7c61327ba7.bindTooltip(
+                `<div>
+                     Codelco Op. Norte — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_843c6e0987a3db33887bcf7c61327ba7.setIcon(icon_efbf28eea5d3646a68b421492de5023f);
+            
+    
+            var marker_e91db640fedd24c2c526418931cbfabf = L.marker(
+                [-22.0955, -70.195],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_f6bcc88aef408b2b97a1d65cdcea713f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1ccf6414b992df07d267d803e116d9d9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0ab33ec448ba9e267bdf47adbed8da7c = $(`<div id="html_0ab33ec448ba9e267bdf47adbed8da7c" style="width: 100.0%; height: 100.0%;"><b>Minera El Abra (FMI)</b><br>Sergio Molina, Gte. Diálogo Comunitario<br>REBOTADO — dominio no existe<br>Pendiente: formulario web</div>`)[0];
+                popup_1ccf6414b992df07d267d803e116d9d9.setContent(html_0ab33ec448ba9e267bdf47adbed8da7c);
+            
+        
+
+        marker_e91db640fedd24c2c526418931cbfabf.bindPopup(popup_1ccf6414b992df07d267d803e116d9d9)
+        ;
+
+        
+    
+    
+            marker_e91db640fedd24c2c526418931cbfabf.bindTooltip(
+                `<div>
+                     ⚠️ El Abra — rebotó, pendiente web
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e91db640fedd24c2c526418931cbfabf.setIcon(icon_f6bcc88aef408b2b97a1d65cdcea713f);
+            
+    
+            var marker_6f3053d074f867f00953ddb5e0227a22 = L.marker(
+                [-23.0867, -70.4108],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_3d82121a8507cc96ab1878a5c10fb3f6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_beff33e4ab818495eb014ca0d4b624d2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a8e68d05a6d46806f8fddddead8f3db8 = $(`<div id="html_a8e68d05a6d46806f8fddddead8f3db8" style="width: 100.0%; height: 100.0%;"><b>Sindicato Eventuales N°4 Bahía Angamos</b><br>Manuel Díaz Cerda<br>Email enviado — zona portuaria</div>`)[0];
+                popup_beff33e4ab818495eb014ca0d4b624d2.setContent(html_a8e68d05a6d46806f8fddddead8f3db8);
+            
+        
+
+        marker_6f3053d074f867f00953ddb5e0227a22.bindPopup(popup_beff33e4ab818495eb014ca0d4b624d2)
+        ;
+
+        
+    
+    
+            marker_6f3053d074f867f00953ddb5e0227a22.bindTooltip(
+                `<div>
+                     Sind. Eventuales Angamos — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6f3053d074f867f00953ddb5e0227a22.setIcon(icon_3d82121a8507cc96ab1878a5c10fb3f6);
+            
+    
+            var marker_c8adcb736f2609b31ce6e3ff230e19eb = L.marker(
+                [-23.0867, -70.4095],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_d0613b1c5b5c1af2e89b30f9c0a79bdf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aca7082cf0b77fffa5518c74fd23b1b6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4b7896e8e30bd9d9ac16f1a606fd23f6 = $(`<div id="html_4b7896e8e30bd9d9ac16f1a606fd23f6" style="width: 100.0%; height: 100.0%;"><b>Sind. N°1 Trab. Codelco Chile (Mejillones)</b><br>Alberto Muñoz Sandoval<br>Email enviado</div>`)[0];
+                popup_aca7082cf0b77fffa5518c74fd23b1b6.setContent(html_4b7896e8e30bd9d9ac16f1a606fd23f6);
+            
+        
+
+        marker_c8adcb736f2609b31ce6e3ff230e19eb.bindPopup(popup_aca7082cf0b77fffa5518c74fd23b1b6)
+        ;
+
+        
+    
+    
+            marker_c8adcb736f2609b31ce6e3ff230e19eb.bindTooltip(
+                `<div>
+                     Sind. Codelco Mejillones — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c8adcb736f2609b31ce6e3ff230e19eb.setIcon(icon_d0613b1c5b5c1af2e89b30f9c0a79bdf);
+            
+    
+            var marker_14b6454663757e39ca5070a4b30aa508 = L.marker(
+                [-23.0867, -70.4121],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_e01c6c65ef67f8c9d8236b5de8d01c49 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_31c20f14f4ae222e125c9abbba4ad1cd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_49a9eff0812ef86821259e11307f23e3 = $(`<div id="html_49a9eff0812ef86821259e11307f23e3" style="width: 100.0%; height: 100.0%;"><b>Puerto Angamos</b><br>• <b>Ultraport</b> — contacto@ultraport.cl (enviado, sin respuesta)<br>• <b>ANFPORT</b> / Gina Caprioglio — contacto@anfport.cl (enviado)<br>• <b>Sindicato Ultraport</b> — Melissa Vega pide teléfono</div>`)[0];
+                popup_31c20f14f4ae222e125c9abbba4ad1cd.setContent(html_49a9eff0812ef86821259e11307f23e3);
+            
+        
+
+        marker_14b6454663757e39ca5070a4b30aa508.bindPopup(popup_31c20f14f4ae222e125c9abbba4ad1cd)
+        ;
+
+        
+    
+    
+            marker_14b6454663757e39ca5070a4b30aa508.bindTooltip(
+                `<div>
+                     Puerto Angamos — Ultraport / ANFPORT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_14b6454663757e39ca5070a4b30aa508.setIcon(icon_e01c6c65ef67f8c9d8236b5de8d01c49);
+            
+    
+            var marker_92bc54bf622cccedeadee0e7893fe7ff = L.marker(
+                [-23.0867, -70.415],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_8c87ec29a2275d9881dc0ac79825c97e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_08116900ab8efb09738f587d9c90e93a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cf686862916ff44652c66ca607ec6600 = $(`<div id="html_cf686862916ff44652c66ca607ec6600" style="width: 100.0%; height: 100.0%;"><b>Puerto Mejillones S.A.</b><br>Dante Battaglia<br><b style="color:orange;">PENDIENTE — no enviado aún</b></div>`)[0];
+                popup_08116900ab8efb09738f587d9c90e93a.setContent(html_cf686862916ff44652c66ca607ec6600);
+            
+        
+
+        marker_92bc54bf622cccedeadee0e7893fe7ff.bindPopup(popup_08116900ab8efb09738f587d9c90e93a)
+        ;
+
+        
+    
+    
+            marker_92bc54bf622cccedeadee0e7893fe7ff.bindTooltip(
+                `<div>
+                     ⚠️ Puerto Mejillones — PENDIENTE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_92bc54bf622cccedeadee0e7893fe7ff.setIcon(icon_8c87ec29a2275d9881dc0ac79825c97e);
+            
+    
+            var marker_6c2cfdd8840784831644a9d6577a90d6 = L.marker(
+                [-23.0588, -70.3661],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_94579592aa9590b5b15d8c007b468971 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_55f03b5a49e0c8abc80411130587fcfc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_526e6770bd87e7cbcd0f983cacd4fa49 = $(`<div id="html_526e6770bd87e7cbcd0f983cacd4fa49" style="width: 100.0%; height: 100.0%;"><b>Zona industrial norte</b><br>• <b>GNL Mejillones</b> — central@gnlm.cl (enviado, sin respuesta)<br>• <b>ENAEX</b> — enaex@enaex.com (enviado, sin respuesta)<br>• <b>Mantos de la Luna</b> — secretaria.gerencia@ (enviado, sin respuesta)<br>• <b>Molynor</b> — Eduardo Riquelme (PENDIENTE)<br>• <b>NORACID</b> — Werner Watznauer (PENDIENTE)<br>• <b>Promet</b> — Cristóbal Schneider (PENDIENTE)</div>`)[0];
+                popup_55f03b5a49e0c8abc80411130587fcfc.setContent(html_526e6770bd87e7cbcd0f983cacd4fa49);
+            
+        
+
+        marker_6c2cfdd8840784831644a9d6577a90d6.bindPopup(popup_55f03b5a49e0c8abc80411130587fcfc)
+        ;
+
+        
+    
+    
+            marker_6c2cfdd8840784831644a9d6577a90d6.bindTooltip(
+                `<div>
+                     Zona industrial — GNL/ENAEX/Mantos + 3 pendientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6c2cfdd8840784831644a9d6577a90d6.setIcon(icon_94579592aa9590b5b15d8c007b468971);
+            
+    
+            var marker_1055a3a17a7e4a83fff323d6a50a8559 = L.marker(
+                [-23.64, -70.394],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_fb1959298d0c135197264927291d1f70 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_388884af013cc30cb6cded88d5d60a83 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_afbf2a5aa7aa613c6a4db2700a86eaf2 = $(`<div id="html_afbf2a5aa7aa613c6a4db2700a86eaf2" style="width: 100.0%; height: 100.0%;"><b>AIA</b><br>Asoc. Industriales de Antofagasta<br>Email enviado, sin respuesta</div>`)[0];
+                popup_388884af013cc30cb6cded88d5d60a83.setContent(html_afbf2a5aa7aa613c6a4db2700a86eaf2);
+            
+        
+
+        marker_1055a3a17a7e4a83fff323d6a50a8559.bindPopup(popup_388884af013cc30cb6cded88d5d60a83)
+        ;
+
+        
+    
+    
+            marker_1055a3a17a7e4a83fff323d6a50a8559.bindTooltip(
+                `<div>
+                     AIA — sin respuesta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1055a3a17a7e4a83fff323d6a50a8559.setIcon(icon_fb1959298d0c135197264927291d1f70);
+            
+    
+            var marker_54807faf283f87f40ac0c1bf00fab541 = L.marker(
+                [-23.6385, -70.396],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_f8382f1e59dd10eacab49483a2b4f5ee = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6d32a23e0aa0e1766f0cce31ea11aca8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bcbc5327a4df245fb610eb8ab3b91e38 = $(`<div id="html_bcbc5327a4df245fb610eb8ab3b91e38" style="width: 100.0%; height: 100.0%;"><b>Puerto Antofagasta</b><br>Email enviado<br>Sin respuesta</div>`)[0];
+                popup_6d32a23e0aa0e1766f0cce31ea11aca8.setContent(html_bcbc5327a4df245fb610eb8ab3b91e38);
+            
+        
+
+        marker_54807faf283f87f40ac0c1bf00fab541.bindPopup(popup_6d32a23e0aa0e1766f0cce31ea11aca8)
+        ;
+
+        
+    
+    
+            marker_54807faf283f87f40ac0c1bf00fab541.bindTooltip(
+                `<div>
+                     Puerto Antofagasta — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_54807faf283f87f40ac0c1bf00fab541.setIcon(icon_f8382f1e59dd10eacab49483a2b4f5ee);
+            
+    
+            var marker_106da09898c4143538e4f3dfa3669a61 = L.marker(
+                [-23.6385, -70.3945],
+                {
+}
+            ).addTo(feature_group_0232415df653224c044d68ee32bd8e3b);
+        
+    
+            var icon_73ecc1e9ac0875fc45bd0afac6d67e48 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0dd03cb9af016a421613deba4a5df6dc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9f29a3d0327f8353129e7b5f97c1fda1 = $(`<div id="html_9f29a3d0327f8353129e7b5f97c1fda1" style="width: 100.0%; height: 100.0%;"><b>FCAB</b><br>Jorge Mateluna, RSE<br>Email enviado<br>Sin respuesta</div>`)[0];
+                popup_0dd03cb9af016a421613deba4a5df6dc.setContent(html_9f29a3d0327f8353129e7b5f97c1fda1);
+            
+        
+
+        marker_106da09898c4143538e4f3dfa3669a61.bindPopup(popup_0dd03cb9af016a421613deba4a5df6dc)
+        ;
+
+        
+    
+    
+            marker_106da09898c4143538e4f3dfa3669a61.bindTooltip(
+                `<div>
+                     FCAB — enviado
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_106da09898c4143538e4f3dfa3669a61.setIcon(icon_73ecc1e9ac0875fc45bd0afac6d67e48);
+            
+    
+            feature_group_0232415df653224c044d68ee32bd8e3b.addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+        
+    
+            var feature_group_b9f7dee7c95ed673eed9a52f9e9d3335 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_14b486293521636f265907c9956c9ef5 = L.marker(
+                [-23.634, -70.398],
+                {
+}
+            ).addTo(feature_group_b9f7dee7c95ed673eed9a52f9e9d3335);
+        
+    
+            var icon_9952be9fdb96194c5b4377cf61f6ebf5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "earphone",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_56a2f7d7e72a5dad2bbf1e6d3d347941 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4e81e2f43efc010fc91837c9d11e03bf = $(`<div id="html_4e81e2f43efc010fc91837c9d11e03bf" style="width: 100.0%; height: 100.0%;"><b>Gobernación Marítima</b><br>DIRECTEMAR, Av. Grecia 1946<br>Tel: <b>+56 55 2630000</b><br>Ley del Lobby: FALTA enviar<br>Email rebotó 2 veces — llamar o ir</div>`)[0];
+                popup_56a2f7d7e72a5dad2bbf1e6d3d347941.setContent(html_4e81e2f43efc010fc91837c9d11e03bf);
+            
+        
+
+        marker_14b486293521636f265907c9956c9ef5.bindPopup(popup_56a2f7d7e72a5dad2bbf1e6d3d347941)
+        ;
+
+        
+    
+    
+            marker_14b486293521636f265907c9956c9ef5.bindTooltip(
+                `<div>
+                     📞 Gob. Marítima — +56 55 2630000
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_14b486293521636f265907c9956c9ef5.setIcon(icon_9952be9fdb96194c5b4377cf61f6ebf5);
+            
+    
+            var marker_43c9b6404ad2c10e31314ede5fc33557 = L.marker(
+                [-23.649, -70.395],
+                {
+}
+            ).addTo(feature_group_b9f7dee7c95ed673eed9a52f9e9d3335);
+        
+    
+            var icon_c963479250b3b41e0218c02a6a6c70f3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "earphone",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7e055636904b62ea88800798e1ec773e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_49e7eff6f1a05d8d689d4d2144de99b7 = $(`<div id="html_49e7eff6f1a05d8d689d4d2144de99b7" style="width: 100.0%; height: 100.0%;"><b>Cámara de Comercio Antofagasta</b><br>Tel: <b>+56 55 2225 175</b><br>Email rebotó — llamar o ir en persona</div>`)[0];
+                popup_7e055636904b62ea88800798e1ec773e.setContent(html_49e7eff6f1a05d8d689d4d2144de99b7);
+            
+        
+
+        marker_43c9b6404ad2c10e31314ede5fc33557.bindPopup(popup_7e055636904b62ea88800798e1ec773e)
+        ;
+
+        
+    
+    
+            marker_43c9b6404ad2c10e31314ede5fc33557.bindTooltip(
+                `<div>
+                     📞 Cám. Comercio — +56 55 2225 175
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_43c9b6404ad2c10e31314ede5fc33557.setIcon(icon_c963479250b3b41e0218c02a6a6c70f3);
+            
+    
+            var marker_7e3f8d4df30fb895bc4eedd0e77c1296 = L.marker(
+                [-23.0976, -70.452],
+                {
+}
+            ).addTo(feature_group_b9f7dee7c95ed673eed9a52f9e9d3335);
+        
+    
+            var icon_bf528be7c96dfe5d61a49c8c3507d766 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "earphone",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59b88baaf3c4f7d33f135615aab28815 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0eae2b8f0cf35bcf9657a78ab6a8b6df = $(`<div id="html_0eae2b8f0cf35bcf9657a78ab6a8b6df" style="width: 100.0%; height: 100.0%;"><b>CIFAMAC — Juan Menares</b><br>Director<br>Tel: <b>991451663</b><br>Pidió llamada telefónica</div>`)[0];
+                popup_59b88baaf3c4f7d33f135615aab28815.setContent(html_0eae2b8f0cf35bcf9657a78ab6a8b6df);
+            
+        
+
+        marker_7e3f8d4df30fb895bc4eedd0e77c1296.bindPopup(popup_59b88baaf3c4f7d33f135615aab28815)
+        ;
+
+        
+    
+    
+            marker_7e3f8d4df30fb895bc4eedd0e77c1296.bindTooltip(
+                `<div>
+                     📞 CIFAMAC — 991451663
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7e3f8d4df30fb895bc4eedd0e77c1296.setIcon(icon_bf528be7c96dfe5d61a49c8c3507d766);
+            
+    
+            var marker_2db3e2bf6fde9dfe5277eec104f9f756 = L.marker(
+                [-23.0867, -70.4135],
+                {
+}
+            ).addTo(feature_group_b9f7dee7c95ed673eed9a52f9e9d3335);
+        
+    
+            var icon_8be6f03d0405566964afa00ef8439f1b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "earphone",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5d5def6ab1bd2682b75f5d00471d4bef = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e7fee1ed0c6ba22d23f3fc8ac1231a9e = $(`<div id="html_e7fee1ed0c6ba22d23f3fc8ac1231a9e" style="width: 100.0%; height: 100.0%;"><b>Sindicato Ultraport</b><br>Melissa Vega<br>Pide contacto telefónico<br>Daniel Henríquez — Puerto Angamos</div>`)[0];
+                popup_5d5def6ab1bd2682b75f5d00471d4bef.setContent(html_e7fee1ed0c6ba22d23f3fc8ac1231a9e);
+            
+        
+
+        marker_2db3e2bf6fde9dfe5277eec104f9f756.bindPopup(popup_5d5def6ab1bd2682b75f5d00471d4bef)
+        ;
+
+        
+    
+    
+            marker_2db3e2bf6fde9dfe5277eec104f9f756.bindTooltip(
+                `<div>
+                     📞 Sindicato Ultraport — pide teléfono
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2db3e2bf6fde9dfe5277eec104f9f756.setIcon(icon_8be6f03d0405566964afa00ef8439f1b);
+            
+    
+            feature_group_b9f7dee7c95ed673eed9a52f9e9d3335.addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+        
+    
+            var feature_group_ce889087eb51494724a527f7858609bc = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_c535529dc083092ee8ee434877aa26a5 = L.marker(
+                [-23.64, -70.395],
+                {
+}
+            ).addTo(feature_group_ce889087eb51494724a527f7858609bc);
+        
+    
+            var icon_e82792f4ac4c6e4af838da44d710e857 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "time",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_19e3c4536667c1ab4a541420ea47e708 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a32b68b13c63daf2d5a9b4349cda536 = $(`<div id="html_2a32b68b13c63daf2d5a9b4349cda536" style="width: 100.0%; height: 100.0%;"><b>CChC Antofagasta</b><br>Patricio Aguilera (Comunicaciones)<br>Presidente de vacaciones<br><b>Ofrecen entrevista telemática</b> — esperando horario</div>`)[0];
+                popup_19e3c4536667c1ab4a541420ea47e708.setContent(html_2a32b68b13c63daf2d5a9b4349cda536);
+            
+        
+
+        marker_c535529dc083092ee8ee434877aa26a5.bindPopup(popup_19e3c4536667c1ab4a541420ea47e708)
+        ;
+
+        
+    
+    
+            marker_c535529dc083092ee8ee434877aa26a5.bindTooltip(
+                `<div>
+                     ⏳ CChC — telemática pendiente
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c535529dc083092ee8ee434877aa26a5.setIcon(icon_e82792f4ac4c6e4af838da44d710e857);
+            
+    
+            var marker_a715406b2b102023542730a0f1d66343 = L.marker(
+                [-23.641, -70.395],
+                {
+}
+            ).addTo(feature_group_ce889087eb51494724a527f7858609bc);
+        
+    
+            var icon_45b4717bbdd4dc5f637f52bb92ef66da = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "time",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_11b782c814e6df5751aaee3c9aea7eaa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fb8c1dd0c39d6422bfc0d89609c83041 = $(`<div id="html_fb8c1dd0c39d6422bfc0d89609c83041" style="width: 100.0%; height: 100.0%;"><b>Fundación Minera Escondida (BHP)</b><br>Eugenia Camazón<br>De vacaciones hasta 23-feb<br>Retomar contacto post viaje</div>`)[0];
+                popup_11b782c814e6df5751aaee3c9aea7eaa.setContent(html_fb8c1dd0c39d6422bfc0d89609c83041);
+            
+        
+
+        marker_a715406b2b102023542730a0f1d66343.bindPopup(popup_11b782c814e6df5751aaee3c9aea7eaa)
+        ;
+
+        
+    
+    
+            marker_a715406b2b102023542730a0f1d66343.bindTooltip(
+                `<div>
+                     ⏳ FME — post 23 feb
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a715406b2b102023542730a0f1d66343.setIcon(icon_45b4717bbdd4dc5f637f52bb92ef66da);
+            
+    
+            var marker_2a9eb2f7646ca52d1572c879a15ff01e = L.marker(
+                [-23.642, -70.395],
+                {
+}
+            ).addTo(feature_group_ce889087eb51494724a527f7858609bc);
+        
+    
+            var icon_caf691e57812a9578de2fb0050f50b99 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "time",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db0e6a88f75f766efad2eea172e7474c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_25e315c91d98c8bfb382512013fff495 = $(`<div id="html_25e315c91d98c8bfb382512013fff495" style="width: 100.0%; height: 100.0%;"><b>Antofagasta TV</b><br>Director: Eduardo Guggiana<br>De vacaciones hasta 23-feb<br>Ofrece entrevista telemática</div>`)[0];
+                popup_db0e6a88f75f766efad2eea172e7474c.setContent(html_25e315c91d98c8bfb382512013fff495);
+            
+        
+
+        marker_2a9eb2f7646ca52d1572c879a15ff01e.bindPopup(popup_db0e6a88f75f766efad2eea172e7474c)
+        ;
+
+        
+    
+    
+            marker_2a9eb2f7646ca52d1572c879a15ff01e.bindTooltip(
+                `<div>
+                     ⏳ Antofagasta TV — post 23 feb telemática
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2a9eb2f7646ca52d1572c879a15ff01e.setIcon(icon_caf691e57812a9578de2fb0050f50b99);
+            
+    
+            var marker_1d3bb194dc822ade57d5f899b3bd7496 = L.marker(
+                [-23.6798, -70.4072],
+                {
+}
+            ).addTo(feature_group_ce889087eb51494724a527f7858609bc);
+        
+    
+            var icon_fcf8b3ed591cf04652ffd189ab99332a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "time",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_05249958980e7abf74364644e939ce7b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_81ab0b75bf93871830a273e090327041 = $(`<div id="html_81ab0b75bf93871830a273e090327041" style="width: 100.0%; height: 100.0%;"><b>UCN — Gabriel González</b><br>Geología<br>De vacaciones, regresa 6 marzo</div>`)[0];
+                popup_05249958980e7abf74364644e939ce7b.setContent(html_81ab0b75bf93871830a273e090327041);
+            
+        
+
+        marker_1d3bb194dc822ade57d5f899b3bd7496.bindPopup(popup_05249958980e7abf74364644e939ce7b)
+        ;
+
+        
+    
+    
+            marker_1d3bb194dc822ade57d5f899b3bd7496.bindTooltip(
+                `<div>
+                     ⏳ UCN González — post 6 mar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1d3bb194dc822ade57d5f899b3bd7496.setIcon(icon_fcf8b3ed591cf04652ffd189ab99332a);
+            
+    
+            var marker_892766074dfe8bcbe59c253464ad2c1d = L.marker(
+                [-22.093, -70.197],
+                {
+}
+            ).addTo(feature_group_ce889087eb51494724a527f7858609bc);
+        
+    
+            var icon_f9a7f4c025114cc69ac006782940af64 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "time",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f31e25c529f44d8582b7ffaaaf1691e7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_055d5ae54740c8c2bebc40370ab0583e = $(`<div id="html_055d5ae54740c8c2bebc40370ab0583e" style="width: 100.0%; height: 100.0%;"><b>InterAcid — César Sanhueza</b><br>Tocopilla<br>Disponible después del 9 de marzo<br>Entrevista presencial o virtual</div>`)[0];
+                popup_f31e25c529f44d8582b7ffaaaf1691e7.setContent(html_055d5ae54740c8c2bebc40370ab0583e);
+            
+        
+
+        marker_892766074dfe8bcbe59c253464ad2c1d.bindPopup(popup_f31e25c529f44d8582b7ffaaaf1691e7)
+        ;
+
+        
+    
+    
+            marker_892766074dfe8bcbe59c253464ad2c1d.bindTooltip(
+                `<div>
+                     ⏳ InterAcid — post 9 mar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_892766074dfe8bcbe59c253464ad2c1d.setIcon(icon_f9a7f4c025114cc69ac006782940af64);
+            
+    
+            var marker_e2663688779c94a93e4c1fa8cd6c819b = L.marker(
+                [-23.6798, -70.4125],
+                {
+}
+            ).addTo(feature_group_ce889087eb51494724a527f7858609bc);
+        
+    
+            var icon_e8b17c70e11a9d66702ea76cb893566f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "time",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_587e9fe3c7dcaa251f6b45be00116f19 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_98f634b7657a61d6c4b7543798e1376a = $(`<div id="html_98f634b7657a61d6c4b7543798e1376a" style="width: 100.0%; height: 100.0%;"><b>IMI UCN</b><br>Instituto de Migraciones<br>Vuelve a atender en marzo</div>`)[0];
+                popup_587e9fe3c7dcaa251f6b45be00116f19.setContent(html_98f634b7657a61d6c4b7543798e1376a);
+            
+        
+
+        marker_e2663688779c94a93e4c1fa8cd6c819b.bindPopup(popup_587e9fe3c7dcaa251f6b45be00116f19)
+        ;
+
+        
+    
+    
+            marker_e2663688779c94a93e4c1fa8cd6c819b.bindTooltip(
+                `<div>
+                     ⏳ IMI UCN — marzo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e2663688779c94a93e4c1fa8cd6c819b.setIcon(icon_e8b17c70e11a9d66702ea76cb893566f);
+            
+    
+            var marker_7887bfb39faf9dbc833d8673a303c01f = L.marker(
+                [-22.091, -70.1975],
+                {
+}
+            ).addTo(feature_group_ce889087eb51494724a527f7858609bc);
+        
+    
+            var icon_afe554ecb143f4d542c8c32ada4a6f7a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "time",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_509aee7a90bd2c9b7ad449729f73bbd4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d4b41079a6787cf6e8a29e735b2699cf = $(`<div id="html_d4b41079a6787cf6e8a29e735b2699cf" style="width: 100.0%; height: 100.0%;"><b>Radio Definitiva (90.5)</b><br>Gustavo Morales<br>De vacaciones (periodista y dueño)</div>`)[0];
+                popup_509aee7a90bd2c9b7ad449729f73bbd4.setContent(html_d4b41079a6787cf6e8a29e735b2699cf);
+            
+        
+
+        marker_7887bfb39faf9dbc833d8673a303c01f.bindPopup(popup_509aee7a90bd2c9b7ad449729f73bbd4)
+        ;
+
+        
+    
+    
+            marker_7887bfb39faf9dbc833d8673a303c01f.bindTooltip(
+                `<div>
+                     ⏳ Radio Definitiva — vacaciones
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7887bfb39faf9dbc833d8673a303c01f.setIcon(icon_afe554ecb143f4d542c8c32ada4a6f7a);
+            
+    
+            feature_group_ce889087eb51494724a527f7858609bc.addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+        
+    
+            var feature_group_422ca35c4c75482ce7a65de3dca973f2 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_fbcecfa22c91828d166091d54df27563 = L.marker(
+                [-23.0985, -70.453],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_7387f104229ed9c2093f6b30e07a003b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ac4fa0b5fbb3cf53f751ed400a3e13b6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_69e5da7129ff2a8b319024f1dcf23f03 = $(`<div id="html_69e5da7129ff2a8b319024f1dcf23f03" style="width: 100.0%; height: 100.0%;"><b>Coordinadora Despierta Mejillones</b><br>Organización ambiental ciudadana<br>Sin email — preguntar en DIDECO o FUNCULTUR</div>`)[0];
+                popup_ac4fa0b5fbb3cf53f751ed400a3e13b6.setContent(html_69e5da7129ff2a8b319024f1dcf23f03);
+            
+        
+
+        marker_fbcecfa22c91828d166091d54df27563.bindPopup(popup_ac4fa0b5fbb3cf53f751ed400a3e13b6)
+        ;
+
+        
+    
+    
+            marker_fbcecfa22c91828d166091d54df27563.bindTooltip(
+                `<div>
+                     🚪 Despierta Mejillones — buscar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fbcecfa22c91828d166091d54df27563.setIcon(icon_7387f104229ed9c2093f6b30e07a003b);
+            
+    
+            var marker_00fc3b1de2e9704c6a8c56e59e922ee5 = L.marker(
+                [-23.099, -70.4535],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_ada5e54d25b3fd85f3e323dfe8f90ccc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2adca54b4534fe231c9978ed7375864c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_893077e6d91c5371c997f97a3d8a5263 = $(`<div id="html_893077e6d91c5371c997f97a3d8a5263" style="width: 100.0%; height: 100.0%;"><b>Fundación Cultural Mejillones</b><br>Sin email — preguntar en Casa de la Cultura</div>`)[0];
+                popup_2adca54b4534fe231c9978ed7375864c.setContent(html_893077e6d91c5371c997f97a3d8a5263);
+            
+        
+
+        marker_00fc3b1de2e9704c6a8c56e59e922ee5.bindPopup(popup_2adca54b4534fe231c9978ed7375864c)
+        ;
+
+        
+    
+    
+            marker_00fc3b1de2e9704c6a8c56e59e922ee5.bindTooltip(
+                `<div>
+                     🚪 Fund. Cultural — buscar cultura
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_00fc3b1de2e9704c6a8c56e59e922ee5.setIcon(icon_ada5e54d25b3fd85f3e323dfe8f90ccc);
+            
+    
+            var marker_77e701152ec7cbc8cf19053c1fc1dd6b = L.marker(
+                [-23.098, -70.452],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_c0408d1d811c389ea924b6e382ac6527 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8a7ded87e7773801af7f5d9901ced939 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_112157cca9b6c93de3a52d90eee387f1 = $(`<div id="html_112157cca9b6c93de3a52d90eee387f1" style="width: 100.0%; height: 100.0%;"><b>Caminantes de la Niebla</b><br>Organización de senderismo / ambiental<br>Sin email — preguntar en DIDECO</div>`)[0];
+                popup_8a7ded87e7773801af7f5d9901ced939.setContent(html_112157cca9b6c93de3a52d90eee387f1);
+            
+        
+
+        marker_77e701152ec7cbc8cf19053c1fc1dd6b.bindPopup(popup_8a7ded87e7773801af7f5d9901ced939)
+        ;
+
+        
+    
+    
+            marker_77e701152ec7cbc8cf19053c1fc1dd6b.bindTooltip(
+                `<div>
+                     🚪 Caminantes de la Niebla
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_77e701152ec7cbc8cf19053c1fc1dd6b.setIcon(icon_c0408d1d811c389ea924b6e382ac6527);
+            
+    
+            var marker_d25758fdf740487341e9439fa98d1714 = L.marker(
+                [-23.0995, -70.4525],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_d99a08a96d2aa16cd7a7354af7461d84 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_759b46746368f8db0bdbadf5d8459a81 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1efe3a356c0533aac737b36c41815a54 = $(`<div id="html_1efe3a356c0533aac737b36c41815a54" style="width: 100.0%; height: 100.0%;"><b>Unión Comunal JJ.VV. Mejillones</b><br>Agrupa todas las juntas de vecinos<br>Sin email — preguntar en Municipalidad</div>`)[0];
+                popup_759b46746368f8db0bdbadf5d8459a81.setContent(html_1efe3a356c0533aac737b36c41815a54);
+            
+        
+
+        marker_d25758fdf740487341e9439fa98d1714.bindPopup(popup_759b46746368f8db0bdbadf5d8459a81)
+        ;
+
+        
+    
+    
+            marker_d25758fdf740487341e9439fa98d1714.bindTooltip(
+                `<div>
+                     🚪 Unión Comunal JJ.VV.
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d25758fdf740487341e9439fa98d1714.setIcon(icon_d99a08a96d2aa16cd7a7354af7461d84);
+            
+    
+            var marker_4916a87d2dcb6fa7a3d942bf11dbae50 = L.marker(
+                [-23.0976, -70.4555],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_aaeb82a1ff61d6ad45b575d974554af8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cb33429cddb48c79f3bf3dcf714d15f0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_216304bec2eda6077238d3c262972d18 = $(`<div id="html_216304bec2eda6077238d3c262972d18" style="width: 100.0%; height: 100.0%;"><b>Sindicatos de pescadores (caleta)</b><br>• Sind. Algas Rojas<br>• Sind. Pescadores N°1 y N°2<br>• Cooperativa Pescadores Unidos<br>• Sind. Patrones de Naves<br>• Sind. Tripulantes<br><i>Sin email — ir directo a la caleta</i></div>`)[0];
+                popup_cb33429cddb48c79f3bf3dcf714d15f0.setContent(html_216304bec2eda6077238d3c262972d18);
+            
+        
+
+        marker_4916a87d2dcb6fa7a3d942bf11dbae50.bindPopup(popup_cb33429cddb48c79f3bf3dcf714d15f0)
+        ;
+
+        
+    
+    
+            marker_4916a87d2dcb6fa7a3d942bf11dbae50.bindTooltip(
+                `<div>
+                     🚪 Pescadores caleta (6 sindicatos)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4916a87d2dcb6fa7a3d942bf11dbae50.setIcon(icon_aaeb82a1ff61d6ad45b575d974554af8);
+            
+    
+            var marker_bbab3be0245ec2f4dc5b6e953bd31caf = L.marker(
+                [-23.0976, -70.4565],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_9721c09b94f49ddf0fe6ade53dbade9f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ec60cc6436f6a1da2753c3e3cefe93c1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_990c6722c170584375a3e2d707ef682a = $(`<div id="html_990c6722c170584375a3e2d707ef682a" style="width: 100.0%; height: 100.0%;"><b>Agrupación Changa Tierra del Sol</b><br>Comunidad indígena de recolectores<br>Sin email — preguntar en caleta o DIDECO</div>`)[0];
+                popup_ec60cc6436f6a1da2753c3e3cefe93c1.setContent(html_990c6722c170584375a3e2d707ef682a);
+            
+        
+
+        marker_bbab3be0245ec2f4dc5b6e953bd31caf.bindPopup(popup_ec60cc6436f6a1da2753c3e3cefe93c1)
+        ;
+
+        
+    
+    
+            marker_bbab3be0245ec2f4dc5b6e953bd31caf.bindTooltip(
+                `<div>
+                     🚪 Changa Tierra del Sol
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bbab3be0245ec2f4dc5b6e953bd31caf.setIcon(icon_9721c09b94f49ddf0fe6ade53dbade9f);
+            
+    
+            var marker_7592d764157d08a4ac4fc91fc7dca404 = L.marker(
+                [-23.0867, -70.408],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_89152281065e48780d32effb7459966e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b632aa10adf3d6c983dd0a9b96691b9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_32d6c69159d420ff2d382bb592dd9e52 = $(`<div id="html_32d6c69159d420ff2d382bb592dd9e52" style="width: 100.0%; height: 100.0%;"><b>Sindicatos zona portuaria/industrial</b><br>• Sind. ENGIE Mejillones<br>• Sindicatos Ultraport (2)<br>• Sind. Plantas Corpesca (2)<br><i>Sin email — ir a Puerto Angamos</i></div>`)[0];
+                popup_8b632aa10adf3d6c983dd0a9b96691b9.setContent(html_32d6c69159d420ff2d382bb592dd9e52);
+            
+        
+
+        marker_7592d764157d08a4ac4fc91fc7dca404.bindPopup(popup_8b632aa10adf3d6c983dd0a9b96691b9)
+        ;
+
+        
+    
+    
+            marker_7592d764157d08a4ac4fc91fc7dca404.bindTooltip(
+                `<div>
+                     🚪 Sindicatos portuarios (5)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7592d764157d08a4ac4fc91fc7dca404.setIcon(icon_89152281065e48780d32effb7459966e);
+            
+    
+            var marker_f2860724533f57bc2fba836e50cc5290 = L.marker(
+                [-23.0588, -70.368],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_79c217169867aab2d8f7e3335c612c27 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6662229261812d6b3680b43c9528ddbf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9d0650a187001d47dac249cf032c5fa3 = $(`<div id="html_9d0650a187001d47dac249cf032c5fa3" style="width: 100.0%; height: 100.0%;"><b>Empresas sin contacto directo</b><br>• <b>ENGIE Chile</b> — termoeléctricas<br>• <b>AES Andes</b> — Angamos / Cochrane<br>• <b>Corpesca</b> — planta pesquera<br>• <b>Oxiquim</b> — químicos<br><i>Sin email directo — ir a portería</i></div>`)[0];
+                popup_6662229261812d6b3680b43c9528ddbf.setContent(html_9d0650a187001d47dac249cf032c5fa3);
+            
+        
+
+        marker_f2860724533f57bc2fba836e50cc5290.bindPopup(popup_6662229261812d6b3680b43c9528ddbf)
+        ;
+
+        
+    
+    
+            marker_f2860724533f57bc2fba836e50cc5290.bindTooltip(
+                `<div>
+                     🚪 Empresas industriales (4)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f2860724533f57bc2fba836e50cc5290.setIcon(icon_79c217169867aab2d8f7e3335c612c27);
+            
+    
+            var marker_5a26ac707ec3ff4e367e08671994e564 = L.marker(
+                [-23.0867, -70.406],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_a52e65dadf6bf6d8a9ea216848f13422 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e22b7612e0d83a536400a9b386fffc37 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_34588b60b13e966ec92656775a898e2e = $(`<div id="html_34588b60b13e966ec92656775a898e2e" style="width: 100.0%; height: 100.0%;"><b>Puerto Angamos (administración)</b><br>Sin contacto directo<br>Ir a oficinas del puerto</div>`)[0];
+                popup_e22b7612e0d83a536400a9b386fffc37.setContent(html_34588b60b13e966ec92656775a898e2e);
+            
+        
+
+        marker_5a26ac707ec3ff4e367e08671994e564.bindPopup(popup_e22b7612e0d83a536400a9b386fffc37)
+        ;
+
+        
+    
+    
+            marker_5a26ac707ec3ff4e367e08671994e564.bindTooltip(
+                `<div>
+                     🚪 Puerto Angamos admin
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5a26ac707ec3ff4e367e08671994e564.setIcon(icon_a52e65dadf6bf6d8a9ea216848f13422);
+            
+    
+            var marker_24dec1bbc2f6da58cd310457abbdd775 = L.marker(
+                [-23.1028, -70.445],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_b5f12bfc031f842506d569b1eba67474 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0853cd8be614a414c9e04a131ea83f42 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4094c7269c4bc2b50216ef81c69b1124 = $(`<div id="html_4094c7269c4bc2b50216ef81c69b1124" style="width: 100.0%; height: 100.0%;"><b>CESFAM Mejillones</b><br>Centro de salud familiar<br>Sin email — ir directo<br>Av. B. O'Higgins</div>`)[0];
+                popup_0853cd8be614a414c9e04a131ea83f42.setContent(html_4094c7269c4bc2b50216ef81c69b1124);
+            
+        
+
+        marker_24dec1bbc2f6da58cd310457abbdd775.bindPopup(popup_0853cd8be614a414c9e04a131ea83f42)
+        ;
+
+        
+    
+    
+            marker_24dec1bbc2f6da58cd310457abbdd775.bindTooltip(
+                `<div>
+                     🚪 CESFAM — ir directo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_24dec1bbc2f6da58cd310457abbdd775.setIcon(icon_b5f12bfc031f842506d569b1eba67474);
+            
+    
+            var marker_1b1722e5c83662dc675a22ba2d51ca6f = L.marker(
+                [-22.092, -70.199],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_fc0c7cf1abd7d2856df94fa3af22e263 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "exclamation-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_81a0028f5a7321452164baa2c9216127 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_31c653525feb93a01ebd0c223b82f8dc = $(`<div id="html_31c653525feb93a01ebd0c223b82f8dc" style="width: 100.0%; height: 100.0%;"><b>Organizaciones comunitarias Tocopilla</b><br>• <b>Comité Ambiental Tocopilla</b><br>• Mesa Transición Socioecológica Justa<br>• ASOCRUT (turismo)<br>• Unión Comunal JJ.VV. (2)<br>• Carmen Galaz (dirigenta social)<br><i>Sin email — preguntar en Muni / DIDECO</i></div>`)[0];
+                popup_81a0028f5a7321452164baa2c9216127.setContent(html_31c653525feb93a01ebd0c223b82f8dc);
+            
+        
+
+        marker_1b1722e5c83662dc675a22ba2d51ca6f.bindPopup(popup_81a0028f5a7321452164baa2c9216127)
+        ;
+
+        
+    
+    
+            marker_1b1722e5c83662dc675a22ba2d51ca6f.bindTooltip(
+                `<div>
+                     🚪 Orgs. comunitarias Tocopilla (6)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1b1722e5c83662dc675a22ba2d51ca6f.setIcon(icon_fc0c7cf1abd7d2856df94fa3af22e263);
+            
+    
+            var marker_801e1db73a5b5db4daa8b96e7edae070 = L.marker(
+                [-22.096, -70.195],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_3480f21748c4ed7b5f143364bbe3c93e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1eac37f28e781cf17879492c41fc0a8a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6e6dfb2dbe2d28f3d50977acc23fd252 = $(`<div id="html_6e6dfb2dbe2d28f3d50977acc23fd252" style="width: 100.0%; height: 100.0%;"><b>Sindicatos caletas Tocopilla</b><br>• Sind. N°2 ElectroAndina<br>• Sind. COFIMAR<br>• Sind. Caleta Huachan<br>• Sind. Punta Atala<br>• Sind. Caleta Buena<br>• Sind. Mar Abierto<br>• Sind. Punta Arenas<br>• Federación Buzos<br><i>Sin email — ir a las caletas</i></div>`)[0];
+                popup_1eac37f28e781cf17879492c41fc0a8a.setContent(html_6e6dfb2dbe2d28f3d50977acc23fd252);
+            
+        
+
+        marker_801e1db73a5b5db4daa8b96e7edae070.bindPopup(popup_1eac37f28e781cf17879492c41fc0a8a)
+        ;
+
+        
+    
+    
+            marker_801e1db73a5b5db4daa8b96e7edae070.bindTooltip(
+                `<div>
+                     🚪 Sindicatos caletas Tocopilla (8)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_801e1db73a5b5db4daa8b96e7edae070.setIcon(icon_3480f21748c4ed7b5f143364bbe3c93e);
+            
+    
+            var marker_bf7d20a1f07e608ed9d2d3708a9ea793 = L.marker(
+                [-22.0915, -70.1995],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_3c06f8134ae688ab15f2bfad48ef54a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ff0980f214ef660431ea158104f354c3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ddea150e683baef99d5155c78282339f = $(`<div id="html_ddea150e683baef99d5155c78282339f" style="width: 100.0%; height: 100.0%;"><b>Autoridades Tocopilla</b><br>• Alcaldesa Ljubica Kurtovic<br>• Delegada Provincial Rachel Cortés<br><i>Sin email directo — ir a Muni</i></div>`)[0];
+                popup_ff0980f214ef660431ea158104f354c3.setContent(html_ddea150e683baef99d5155c78282339f);
+            
+        
+
+        marker_bf7d20a1f07e608ed9d2d3708a9ea793.bindPopup(popup_ff0980f214ef660431ea158104f354c3)
+        ;
+
+        
+    
+    
+            marker_bf7d20a1f07e608ed9d2d3708a9ea793.bindTooltip(
+                `<div>
+                     🚪 Alcaldesa / Delegada — ir a Muni
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bf7d20a1f07e608ed9d2d3708a9ea793.setIcon(icon_3c06f8134ae688ab15f2bfad48ef54a9);
+            
+    
+            var marker_905e1891652a2052c4e9e4943460c207 = L.marker(
+                [-22.0955, -70.1945],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_ba24aa4cd1dc3b187b655ae9079488bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9f352f03fc8ad6da04ac6926ab5e17dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_beecd094f1faeab079bcc350eaa24156 = $(`<div id="html_beecd094f1faeab079bcc350eaa24156" style="width: 100.0%; height: 100.0%;"><b>ENGIE Chile Tocopilla</b><br>Central termoeléctrica (en cierre)<br>Sin email — ir a portería</div>`)[0];
+                popup_9f352f03fc8ad6da04ac6926ab5e17dd.setContent(html_beecd094f1faeab079bcc350eaa24156);
+            
+        
+
+        marker_905e1891652a2052c4e9e4943460c207.bindPopup(popup_9f352f03fc8ad6da04ac6926ab5e17dd)
+        ;
+
+        
+    
+    
+            marker_905e1891652a2052c4e9e4943460c207.bindTooltip(
+                `<div>
+                     🚪 ENGIE Tocopilla — portería
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_905e1891652a2052c4e9e4943460c207.setIcon(icon_ba24aa4cd1dc3b187b655ae9079488bc);
+            
+    
+            var marker_c7cd1635cc5f51918c6c81aa5d6eaec7 = L.marker(
+                [-23.638, -70.402],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_98fe7bb9e33ec50464f3bec714467f0d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5a7ff69eacb9a76a7fe99dd8a0408cfe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5b6fcd93018bc6a0c59ab784552b58bd = $(`<div id="html_5b6fcd93018bc6a0c59ab784552b58bd" style="width: 100.0%; height: 100.0%;"><b>Sindicatos pesqueros Antofagasta</b><br>• Sind. Mujeres del Mar (2)<br>• Sind. San Pedro Coloso<br>• AGREBUMAR (2)<br>• Sind. Portuarios<br>• STI Pescadores Caleta Antofagasta<br>• Sind. Pescadores Artesanales<br><i>Sin email — ir a caleta / terminal pesquero</i></div>`)[0];
+                popup_5a7ff69eacb9a76a7fe99dd8a0408cfe.setContent(html_5b6fcd93018bc6a0c59ab784552b58bd);
+            
+        
+
+        marker_c7cd1635cc5f51918c6c81aa5d6eaec7.bindPopup(popup_5a7ff69eacb9a76a7fe99dd8a0408cfe)
+        ;
+
+        
+    
+    
+            marker_c7cd1635cc5f51918c6c81aa5d6eaec7.bindTooltip(
+                `<div>
+                     🚪 Sindicatos pesqueros Antofagasta (8)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c7cd1635cc5f51918c6c81aa5d6eaec7.setIcon(icon_98fe7bb9e33ec50464f3bec714467f0d);
+            
+    
+            var marker_98a46e52c936fbc1246ef212fca32409 = L.marker(
+                [-23.653, -70.3975],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_9c9b900cd969c2650a5dfa51752fcbf0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_372c697c42ef0e108c69d7392e0b6b56 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_55b288b6c959874443bf7e3a59a67573 = $(`<div id="html_55b288b6c959874443bf7e3a59a67573" style="width: 100.0%; height: 100.0%;"><b>Juntas de vecinos Antofagasta</b><br>• JV La Unión Hace la Fuerza<br>• JV Américas Unidas<br>• JV José Papic (Roxana Carrizo)<br>• Unión Comunal JJ.VV.<br><i>Sin email — preguntar en Muni / DIDECO</i></div>`)[0];
+                popup_372c697c42ef0e108c69d7392e0b6b56.setContent(html_55b288b6c959874443bf7e3a59a67573);
+            
+        
+
+        marker_98a46e52c936fbc1246ef212fca32409.bindPopup(popup_372c697c42ef0e108c69d7392e0b6b56)
+        ;
+
+        
+    
+    
+            marker_98a46e52c936fbc1246ef212fca32409.bindTooltip(
+                `<div>
+                     🚪 JJ.VV. Antofagasta (4)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_98a46e52c936fbc1246ef212fca32409.setIcon(icon_9c9b900cd969c2650a5dfa51752fcbf0);
+            
+    
+            var marker_ca53c362acba097006ced5a197c2f41c = L.marker(
+                [-23.653, -70.396],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_fc670ac1058d04ab8a7ac4797c63321b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_47cb4ac9f3b40ea33ff2cc8b81738207 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2383d7d30184d9910789906e89f7056a = $(`<div id="html_2383d7d30184d9910789906e89f7056a" style="width: 100.0%; height: 100.0%;"><b>DIDECO Municipal Antofagasta</b><br>Puede derivar a organizaciones locales<br>Sin email directo — ir a Municipalidad</div>`)[0];
+                popup_47cb4ac9f3b40ea33ff2cc8b81738207.setContent(html_2383d7d30184d9910789906e89f7056a);
+            
+        
+
+        marker_ca53c362acba097006ced5a197c2f41c.bindPopup(popup_47cb4ac9f3b40ea33ff2cc8b81738207)
+        ;
+
+        
+    
+    
+            marker_ca53c362acba097006ced5a197c2f41c.bindTooltip(
+                `<div>
+                     🚪 DIDECO Antofagasta — ir a Muni
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ca53c362acba097006ced5a197c2f41c.setIcon(icon_fc670ac1058d04ab8a7ac4797c63321b);
+            
+    
+            var marker_9401515385f29f42ee75a9e988e2ce0c = L.marker(
+                [-23.65, -70.393],
+                {
+}
+            ).addTo(feature_group_422ca35c4c75482ce7a65de3dca973f2);
+        
+    
+            var icon_fac5eab911c656fa60d23fc1c2c36314 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bba455a1a8f4c9cd1bd8565ffae8f8c3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0de87cdcbe263783130d373089536d22 = $(`<div id="html_0de87cdcbe263783130d373089536d22" style="width: 100.0%; height: 100.0%;"><b>SEREMI Economía</b><br>Sin contacto por email<br>Ir a oficina regional</div>`)[0];
+                popup_bba455a1a8f4c9cd1bd8565ffae8f8c3.setContent(html_0de87cdcbe263783130d373089536d22);
+            
+        
+
+        marker_9401515385f29f42ee75a9e988e2ce0c.bindPopup(popup_bba455a1a8f4c9cd1bd8565ffae8f8c3)
+        ;
+
+        
+    
+    
+            marker_9401515385f29f42ee75a9e988e2ce0c.bindTooltip(
+                `<div>
+                     🚪 SEREMI Economía — ir
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9401515385f29f42ee75a9e988e2ce0c.setIcon(icon_fac5eab911c656fa60d23fc1c2c36314);
+            
+    
+            feature_group_422ca35c4c75482ce7a65de3dca973f2.addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+        
+    
+            var layer_control_ff4895f55c933459d270d06692fdddda_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_c22e0578ce6c5f70f4c660ea7593e160,
+                    "Vista sat\u00e9lite" : tile_layer_5384f9e003aad5dc90be42847251f192,
+                },
+                overlays :  {
+                    "\u003cspan style=\"color:red;\"\u003e\u0026#9679;\u003c/span\u003e Confirmados (3)" : feature_group_c894d81f6ac6b5ddb93d2a1eaa45712d,
+                    "\u003cspan style=\"color:blue;\"\u003e\u0026#9679;\u003c/span\u003e Oficinas p\u00fablicas / Lobby" : feature_group_f5524b17269bfbed1962ad8fb3d691d1,
+                    "\u003cspan style=\"color:green;\"\u003e\u0026#9679;\u003c/span\u003e Contactados por email" : feature_group_9838dbe149b380d2bb0ab401591f46ad,
+                    "\u003cspan style=\"color:orange;\"\u003e\u0026#9679;\u003c/span\u003e Empresas / sindicatos" : feature_group_0232415df653224c044d68ee32bd8e3b,
+                    "\u003cspan style=\"color:purple;\"\u003e\u0026#9679;\u003c/span\u003e Llamar / WhatsApp" : feature_group_b9f7dee7c95ed673eed9a52f9e9d3335,
+                    "\u003cspan style=\"color:gray;\"\u003e\u0026#9679;\u003c/span\u003e Post-viaje" : feature_group_ce889087eb51494724a527f7858609bc,
+                    "\u003cspan style=\"color:darkred;\"\u003e\u0026#9679;\u003c/span\u003e Ir en persona (sin email)" : feature_group_422ca35c4c75482ce7a65de3dca973f2,
+                },
+            };
+            let layer_control_ff4895f55c933459d270d06692fdddda = L.control.layers(
+                layer_control_ff4895f55c933459d270d06692fdddda_layers.base_layers,
+                layer_control_ff4895f55c933459d270d06692fdddda_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_7d9d535d8b0ed7df7b935b8821d0b001);
+
+        
+</script>
+</html>
